@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
+  before_action :user_already_present?, only: [:new, :create]
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
 
@@ -37,7 +38,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def cancel
   #   super
   # end
-  sessions_controller
+
   protected
 
   # If you have extra params to permit, append them to the sanitizer.
@@ -58,4 +59,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  private
+
+  def user_already_present?
+    if User.count > 0
+      flash[:alert] = "User registration is disabled."
+      redirect_to root_path
+    end
+  end
 end

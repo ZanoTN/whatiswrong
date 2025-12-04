@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html data-theme="light">
   <head>
     <title><%= content_for(:title) || "WhatsIsWrong" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -18,9 +18,12 @@
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+
+    <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body class="bg-base-300 min-h-screen flex flex-col">
+    <%= render "layouts/navbar" %>
     <main class="container mx-auto px-4 py-6">
       <%= yield %>
     </main>
