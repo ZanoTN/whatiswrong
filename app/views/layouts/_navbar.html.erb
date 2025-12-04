@@ -1,10 +1,9 @@
 <% if current_user.present? %>
   <div class="bg-primary shadow-lg">
     <div class="flex container mx-auto items-center px-4 py-1">
-      <div class="flex-1">
-        <%= link_to root_path, class: "text-xl text-primary-content font-bold" do %>
-          WhatIsWrong
-        <% end %>
+      <div class="flex-1 flex items-center gap-4">
+        <%= link_to "WhatIsWrong", root_path, class: "text-xl text-primary-content font-bold" %>
+        <%= link_to "Apps", root_path, class: "text-lg text-primary-content" %>
       </div>
       <div class="flex gap-2">
         <div class="dropdown dropdown-end">
@@ -17,7 +16,7 @@
           </div>
           <ul
             tabindex="-1"
-            class="menu dropdown-content rounded z-1 mt-1 w-50 shadow-lg border-1 border-base-300 bg-base-100 p-2">
+            class="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
             <li>
               <%= link_to "Profile", "#", class: "link" %>
             </li>

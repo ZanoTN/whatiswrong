@@ -16,4 +16,10 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
     sessions: 'users/sessions'
   }
+
+  resources :apps
+
+  resources :messages, only: [ :show ]
+
+  put "api/v1/message", to: "external_api#add_message_v1"
 end

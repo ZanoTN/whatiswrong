@@ -10,7 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_12_04_152955) do
+ActiveRecord::Schema[8.1].define(version: 2025_12_04_221108) do
+  create_table "apps", force: :cascade do |t|
+    t.string "api_key", null: false
+    t.datetime "created_at", null: false
+    t.datetime "last_used_at"
+    t.string "name", null: false
+    t.datetime "updated_at", null: false
+    t.index ["api_key"], name: "index_apps_on_api_key", unique: true
+    t.index ["name"], name: "index_apps_on_name", unique: true
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.integer "app_id", null: false
+    t.string "content", null: false
+    t.datetime "created_at", null: false
+    t.text "details"
+    t.string "level", null: false
+    t.text "metadata"
+    t.datetime "occurred_at", null: false
+    t.text "stack_trace"
+    t.datetime "updated_at", null: false
+    t.index ["app_id"], name: "index_messages_on_app_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "current_sign_in_at"
@@ -29,4 +52,6 @@ ActiveRecord::Schema[8.1].define(version: 2025_12_04_152955) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
   end
+
+  add_foreign_key "messages", "apps"
 end
