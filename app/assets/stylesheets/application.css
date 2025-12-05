@@ -8,3 +8,8 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+
+.w-max-device-form {
+  max-width: 30rem;
+}
