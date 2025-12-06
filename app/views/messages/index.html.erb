@@ -1,0 +1,38 @@
+<h2 class="page-title">Messages</h2>
+
+<div class="card mt-4">
+  <div class="card-status-top bg-azure"></div>
+  <div class="table-responsive">
+    <table class="table table-vcenter card-table">
+      <thead>
+        <tr>
+          <th>Data (UTC)</th>
+          <th>App</th>
+          <th>Level</th>
+          <th>Message</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @messages.each_with_index do |message, index| %>
+          <tr>
+            <td><%= message.occurred_at.utc.strftime("%Y-%m-%d %H:%M:%S") %></td>
+            <td>
+              <%= link_to message.app.name, app_path(message.app), class: 'link' %>
+            <td>
+              <span class="<%= level_class(message) %>">
+                <%= message.level %>
+              </span>
+            </td>
+            <td><%= message.message %></td>
+            <td class="text-end">
+              <%= link_to 'View', message_path(message), class: 'link' %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<%= paginate @messages, window: 2 %>

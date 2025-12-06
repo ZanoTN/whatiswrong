@@ -22,15 +22,10 @@ class PageController < ApplicationController
       date = (start_date + i.days).to_date
       labels << date.strftime("%Y-%m-%d")
 
-      Rails.logger.info("Processing date: #{date}")
-      Rails.logger.info("Error Messages Count: #{messages.select { |m| m.level == 'error' }.count { |m| m.occurred_at.to_date == date }}")
-
       message_count_errors[i] ||= messages.select { |m| m.level == 'error' }.count { |m| m.occurred_at.to_date == date }
       message_count_warnings[i] ||= messages.select { |m| m.level == 'warning' }.count { |m| m.occurred_at.to_date == date }
       message_count_others[i] ||= messages.select { |m| !['error', 'warning'].include?(m.level) }.count { |m| m.occurred_at.to_date == date }
     end
-
-
 
     @graph_data = {
       labels: labels,
@@ -38,8 +33,5 @@ class PageController < ApplicationController
       warnings: message_count_warnings,
       others: message_count_others
     }
-
-    Rails.logger.info("Graph Data: #{@graph_data.inspect}")
-
   end
 end

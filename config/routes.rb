@@ -19,7 +19,8 @@ Rails.application.routes.draw do
 
   resources :apps
 
-  resources :messages, only: [ :show ]
+  resources :messages, only: [ :show, :index ]
 
+  # External API
   put "api/v1/message", to: "external_api#add_message_v1"
 end

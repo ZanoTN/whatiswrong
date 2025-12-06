@@ -1,9 +1,9 @@
 class AppsController < ApplicationController
-  bvefore_action :authenticate_user!
+  before_action :authenticate_user!
   before_action :set_app, only: [ :edit, :update, :destroy, :regenerate_api_key ]
 
   def index
-    @apps = App.all
+    @apps = App.order(:name).page(params[:page]).per(20)
   end
 
   def edit

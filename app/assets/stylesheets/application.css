@@ -9,7 +9,10 @@
  * Consider organizing styles into separate files for maintainability.
  */
 
+html, body {
+    height: 100%;
+}
 
 .w-max-device-form {
-  max-width: 30rem;
+    max-width: 30rem;
 }

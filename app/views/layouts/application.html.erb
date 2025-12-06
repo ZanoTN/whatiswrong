@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="bg-body" data-bs-theme="<%= @theme %>">
   <head>
     <title><%= content_for(:title) || "WhatsIsWrong" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -25,7 +25,7 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="min-h-screen">
+  <body>
     <%= render "layouts/navbar" %>
     <main class="container-xxl py-4">
       <%= yield %>

@@ -24,7 +24,7 @@ def generate_demo_data
     app = App.create!( name: name ) #
 
     # Generate X messages for each app
-    random_message_count = rand(20..90)
+    random_message_count = rand(80..120)
 
     random_message_count.times do |j|
        Message.create(
@@ -35,7 +35,7 @@ def generate_demo_data
         backtrace: Faker::Lorem.paragraph(sentence_count: 3),
 
         # Generate a random timestamp within the last 30 days
-        occurred_at: Faker::Time.between(from: DateTime.now - 30, to: DateTime.now)
+        occurred_at: Faker::Time.between(from: DateTime.now - 31, to: DateTime.now)
       )
     end
   end

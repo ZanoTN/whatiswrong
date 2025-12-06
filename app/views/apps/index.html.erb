@@ -1,0 +1,27 @@
+<h2 class="page-title">Apps</h2>
+
+<div class="card mt-4">
+  <div class="card-status-top bg-azure"></div>
+  <div class="table-responsive">
+    <table class="table table-vcenter card-table">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @apps.each_with_index do |app, index| %>
+        <tr>
+          <td><%= app.name %></td>
+          <td class="text-end">
+            <%= link_to 'View', app_path(app.id), class: 'link link_primary' %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<%= paginate @apps, window: 2 %>

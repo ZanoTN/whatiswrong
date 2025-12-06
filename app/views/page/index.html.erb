@@ -5,7 +5,7 @@
     <div class="card">
       <div class="card-status-top bg-azure"></div>
       <div class="card-body">
-        <h1 class="display-4 mb-4">
+        <h1 class="display-4">
           <%= @message_count %>
         </h1>
         <h2 class="card-title">Messages</h2>
@@ -16,7 +16,7 @@
     <div class="card">
       <div class="card-status-top bg-azure"></div>
       <div class="card-body">
-        <h1 class="display-4 mb-4">
+        <h1 class="display-4">
           <%= @app_count %>
         </h1>
         <h2 class="card-title">Apps</h2>
@@ -27,7 +27,7 @@
     <div class="card">
       <div class="card-status-top bg-azure"></div>
       <div class="card-body">
-        <div id="chart-demo-line" class="position-relative "></div>
+        <div id="chart-root-page" class="position-relative"></div>
       </div>
     </div>
   </div>
@@ -35,10 +35,11 @@
 
 <script>
     const data = <%= @graph_data.to_json.html_safe %>;
+    const theme = '<%= @theme.html_safe %>';
 
     document.addEventListener("DOMContentLoaded", function() {
         window.ApexCharts && (new ApexCharts(document.getElementById(
-            'chart-demo-line'), {
+            'chart-root-page'), {
             chart: {
                 type: "line",
                 fontFamily: 'inherit',
@@ -67,7 +68,7 @@
                 data: data.others
             }],
             tooltip: {
-                theme: 'light'
+                theme: theme
             },
             grid: {
                 padding: {
@@ -81,6 +82,9 @@
             xaxis: {
                 labels: {
                     padding: 0,
+                    style: {
+                        colors: theme === "dark" ? "#fff" : "#000"
+                    }
                 },
                 tooltip: {
                     enabled: false
@@ -89,7 +93,10 @@
             },
             yaxis: {
                 labels: {
-                    padding: 4
+                    padding: 4,
+                    style: {
+                        colors: theme === "dark" ? "#fff" : "#000"
+                    }
                 },
             },
             labels: data.labels,
@@ -99,6 +106,9 @@
                 'lightblue'
             ],
             legend: {
+                labels: {
+                    colors: theme === "dark" ? "#d0d0d0" : "#333"
+                },
                 show: true,
                 position: 'bottom',
                 offsetY: 12,
@@ -108,8 +118,8 @@
                     radius: 100,
                 },
                 itemMargin: {
-                    horizontal: 8,
-                    vertical: 8
+                    horizontal: 10,
+                    vertical: 10
                 },
             },
         })).render();
