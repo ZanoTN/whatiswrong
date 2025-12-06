@@ -2,21 +2,20 @@ class ExternalApiController < ApplicationController
   def add_message_v1
     # Expected params: {
     #  api_key: string,
-    #  level: string (e.g. "info", "warning", "error"),
-    #  content: string,
-    #  metadata: string (optional)
-    #  details: string (optional)
-    #  stack_trace: string (optional)
+    #  level: string ("info", "warning", "error"),
+    #  message: string,
+    #  context: string (optional)
+    #  backtrace: string (optional)
     #  occurred_at: datetime (optional)
     # }
 
     set_app_by_api_key
 
-    message_params = params.permit(:level, :content, :metadata, :details, :stack_trace, :occurred_at)
+    message_params = params.permit(:level, :message, :context, :backtrace, :occurred_at)
 
     if message_params[:level].nil? || message_params[:level].empty? ||
-        message_params[:content].nil? || message_params[:content].empty?
-      render json: { error: 'Level and content are required' }, status: :bad_request and return
+        message_params[:message].nil? || message_params[:message].empty?
+      render json: { error: 'Level and message are required' }, status: :bad_request and return
     end
 
     unless Message.levels.include? message_params[:level]

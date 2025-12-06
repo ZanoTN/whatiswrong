@@ -9,28 +9,34 @@ class PageController < ApplicationController
     date_range = 30
 
     start_date = date_range.days.ago.beginning_of_day
-    messages = Message.where('created_at >= ?', start_date)
-    message_count_errors = messages.where(level: 'error').group("DATE(created_at)").count
-    message_count_warnings = messages.where(level: 'warning').group("DATE(created_at)").count
-    message_count_others = messages.where.not(level: ['error', 'warning']).group("DATE(created_at)").count
+    messages = Message.where('occurred_at >= ?', start_date)
+
+
+    message_count_errors = []
+    message_count_warnings = []
+    message_count_others = []
 
     # Fill in missing dates with zero counts
     labels = []
     (0..date_range-1).each do |i|
       date = (start_date + i.days).to_date
       labels << date.strftime("%Y-%m-%d")
-      message_count_errors[date] ||= 0
-      message_count_warnings[date] ||= 0
-      message_count_others[date] ||= 0
+
+      Rails.logger.info("Processing date: #{date}")
+      Rails.logger.info("Error Messages Count: #{messages.select { |m| m.level == 'error' }.count { |m| m.occurred_at.to_date == date }}")
+
+      message_count_errors[i] ||= messages.select { |m| m.level == 'error' }.count { |m| m.occurred_at.to_date == date }
+      message_count_warnings[i] ||= messages.select { |m| m.level == 'warning' }.count { |m| m.occurred_at.to_date == date }
+      message_count_others[i] ||= messages.select { |m| !['error', 'warning'].include?(m.level) }.count { |m| m.occurred_at.to_date == date }
     end
 
 
 
     @graph_data = {
       labels: labels,
-      errors: message_count_errors.map { |_, count| count },
-      warnings: message_count_warnings.map { |_, count| count },
-      others: message_count_others.map { |_, count| count }
+      errors: message_count_errors,
+      warnings: message_count_warnings,
+      others: message_count_others
     }
 
     Rails.logger.info("Graph Data: #{@graph_data.inspect}")
