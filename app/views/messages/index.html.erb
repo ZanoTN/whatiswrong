@@ -18,7 +18,7 @@
           <tr>
             <td><%= message.occurred_at.utc.strftime("%Y-%m-%d %H:%M:%S") %></td>
             <td>
-              <%= link_to message.app.name, app_path(message.app), class: 'link' %>
+              <%= link_to message.app.name, edit_app_path(message.app), class: 'link' %>
             <td>
               <span class="<%= level_class(message) %>">
                 <%= message.level %>
