@@ -9,4 +9,15 @@ module MessagesHelper
       'badge bg-blue-lt text-blue-lt-fg text-uppercase'
     end
   end
+
+  def card_top_class(message)
+    case message.level
+    when 'warning'
+      'card-status-top bg-warning'
+    when 'error'
+      'card-status-top bg-danger'
+    else
+      'card-status-top bg-info'
+    end
+  end
 end

@@ -31,7 +31,7 @@ def generate_demo_data
         app: app,
         message: Faker::Lorem.sentence(word_count: 10),
         context: Faker::Lorem.sentence(word_count: 5),
-        level: %w[info warning error error].sample,
+        level: %w[info warning error error error error].sample,
         backtrace: Faker::Lorem.paragraph(sentence_count: 3),
 
         # Generate a random timestamp within the last 30 days

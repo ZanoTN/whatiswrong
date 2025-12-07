@@ -34,4 +34,14 @@ class PageController < ApplicationController
       others: message_count_others
     }
   end
+
+  def toggle_theme
+    if cookies[:theme] == 'dark'
+      cookies[:theme] = { value: 'light', expires: 1.year.from_now }
+    else
+      cookies[:theme] = { value: 'dark', expires: 1.year.from_now }
+    end
+
+    redirect_back(fallback_location: root_path)
+  end
 end

@@ -41,9 +41,9 @@
         window.ApexCharts && (new ApexCharts(document.getElementById(
             'chart-root-page'), {
             chart: {
-                type: "line",
+                type: "bar",
                 fontFamily: 'inherit',
-                height: 260,
+                height: 240,
                 parentHeightOffset: 0,
                 toolbar: {
                     show: false,
@@ -51,11 +51,15 @@
                 animations: {
                     enabled: false
                 },
+                stacked: true,
             },
-            stroke: {
-                width: 2,
-                lineCap: "round",
-                curve: "smooth"
+            plotOptions: {
+                bar: {
+                    columnWidth: '50%',
+                }
+            },
+            dataLabels: {
+                enabled: false
             },
             series: [{
                 name: "Errors",

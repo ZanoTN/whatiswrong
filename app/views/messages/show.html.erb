@@ -1,4 +1,33 @@
-<div>
-  <h1 class="font-bold text-4xl">Messages#show</h1>
-  <p>Find me in app/views/messages/show.html.erb</p>
+<h2 class="page-title">Message: <%= @message.id %></h2>
+
+<div class="card mt-4">
+  <div class="<%= card_top_class(@message) %>"></div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col d-flex flex-column mb-3">
+        <p class="fw-bold mb-1">Level:</p>
+        <p class="mb-0 <%= level_class(@message) %> me-auto"><%= @message.level %></p>
+      </div>
+
+      <div class="col d-flex flex-column mb-3">
+        <p class="fw-bold mb-1">Occurred at:</p>
+        <p class="mb-0"><%= @message.occurred_at %></p>
+      </div>
+    </div>
+
+    <div class="col d-flex flex-column mb-3">
+      <p class="fw-bold mb-1">Message:</p>
+      <p class="mb-0"><%= @message.message%></p>
+    </div>
+
+    <div class="col d-flex flex-column mb-3">
+      <p class="fw-bold mb-1">Context:</p>
+      <pre class="bg-body-tertiary text-body mb-0"><%= @message.context %></pre>
+    </div>
+
+    <div class="col d-flex flex-column mb-3">
+      <p class="fw-bold mb-1">Backtrace:</p>
+      <pre class="bg-body-tertiary text-body mb-0"><%= @message.backtrace%></pre>
+    </div>
+  </div>
 </div>
