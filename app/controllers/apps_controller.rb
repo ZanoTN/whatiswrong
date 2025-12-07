@@ -42,7 +42,7 @@ class AppsController < ApplicationController
     else
       flash[:alert] = "Failed to regenerate API key."
     end
-    redirect_to apps_path
+    redirect_to edit_app_path(@app)
   end
 
   private

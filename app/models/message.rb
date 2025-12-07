@@ -38,4 +38,9 @@ class Message < ApplicationRecord
       occurred_at = DateTime.now
     end
   end
+
+  after_create do
+    app.last_used_at = DateTime.now
+    app.save!
+  end
 end

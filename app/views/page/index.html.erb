@@ -82,12 +82,13 @@
                     bottom: -4
                 },
                 strokeDashArray: 4,
+                borderColor: theme === "dark" ? "#444" : "#e0e0e0"
             },
             xaxis: {
                 labels: {
                     padding: 0,
                     style: {
-                        colors: theme === "dark" ? "#fff" : "#000"
+                        colors: theme === "dark" ? "#d0d0d0" : "#333"
                     }
                 },
                 tooltip: {
@@ -99,15 +100,15 @@
                 labels: {
                     padding: 4,
                     style: {
-                        colors: theme === "dark" ? "#fff" : "#000"
+                        colors: theme === "dark" ? "#d0d0d0" : "#333"
                     }
                 },
             },
             labels: data.labels,
             colors: [
-                'red',
-                'orange',
-                'lightblue'
+                'rgb(214,57,57)',
+                'rgb(245,159,0)',
+                'rgb(66,153,225)'
             ],
             legend: {
                 labels: {

@@ -19,7 +19,11 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
 
-  resources :apps
+  resources :apps do
+    member do
+      put "regenerate_api_key"
+    end
+  end
 
   resources :messages, only: [ :show, :index ]
 

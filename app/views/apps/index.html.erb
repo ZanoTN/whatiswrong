@@ -11,14 +11,14 @@
       </tr>
       </thead>
       <tbody>
-      <% @apps.each_with_index do |app, index| %>
-        <tr>
-          <td><%= app.name %></td>
-          <td class="text-end">
-            <%= link_to 'View', app_path(app.id), class: 'link link_primary' %>
-          </td>
-        </tr>
-      <% end %>
+        <% @apps.each_with_index do |app, index| %>
+          <tr>
+            <td><%= app.name %></td>
+            <td class="text-end">
+              <%= link_to 'Edit', edit_app_path(app.id), class: 'link link-primary' %>
+            </td>
+          </tr>
+        <% end %>
       </tbody>
     </table>
   </div>

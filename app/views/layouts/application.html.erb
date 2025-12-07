@@ -17,12 +17,11 @@
     <link rel="icon" href="/icon.png" type="image/png">
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
-    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload", media: "all" %>
+    <%= javascript_importmap_tags %>
 
     <%= stylesheet_link_tag "tabler.min", media: "all", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "tabler.min", defer: true %>
-
-    <%= javascript_importmap_tags %>
   </head>
 
   <body>
