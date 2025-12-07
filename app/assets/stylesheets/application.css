@@ -8,6 +8,9 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+:root {
+    margin: 0 !important;
+}
 
 html, body {
     height: 100%;
