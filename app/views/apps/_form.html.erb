@@ -2,6 +2,8 @@
   <div class="card mt-4" data-controller="app-form">
     <div class="card-status-top bg-azure"></div>
     <div class="card-body">
+      <%= render "layouts/form_errors", model: @app %>
+
       <div class="row g-3">
         <div class="col-12 col-md-6">
           <%= form.label :name, class: "form-label" %>
@@ -15,11 +17,13 @@
               <%= form.text_field :api_key, class: "form-control", required: true, disabled: true, data: { app_form_target: "apiKey" } %>
             </div>
             <div class="col-auto">
-              <%= link_to regenerate_api_key_app_path(@app.id),
-                          data: { turbo_method: :put, turbo_confirm: "Are you sure you want to regenerate the API key? This action cannot be undone." },
-                          disabled: @app.persisted? ? false : true,
-                          class: "btn flex-center btn-icon btn-azure" do %>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-refresh"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4" /><path d="M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4" /></svg>
+              <% if @app.persisted? %>
+                <%= link_to regenerate_api_key_app_path(@app.id),
+                              data: { turbo_method: :put, turbo_confirm: "Are you sure you want to regenerate the API key? This action cannot be undone." },
+                              disabled: @app.persisted? ? false : true,
+                              class: "btn flex-center btn-icon btn-azure" do %>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-refresh"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4" /><path d="M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4" /></svg>
+                <% end %>
               <% end %>
             </div>
             <div class="col-auto">
@@ -30,10 +34,12 @@
           </div>
         </div>
 
-        <div class="col-12">
-          <p class="fw-bold mb-1">Last used at</p>
-          <p class="mb-0"><%= @app.last_used_at ? @app.last_used_at.strftime("%B %d, %Y %I:%M %p") : "Never used" %></p>
-        </div>
+        <% if @app.persisted? %>
+          <div class="col-12">
+            <p class="fw-bold mb-1">Last used at</p>
+            <p class="mb-0"><%= @app.last_used_at ? format_datetime(@app.last_used_at) : "Never used" %></p>
+          </div>
+        <% end %>
       </div>
     </div>
     <div class="card-footer text-end">

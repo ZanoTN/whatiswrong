@@ -24,7 +24,7 @@ class AppsController < ApplicationController
   def create
     @app = App.new(app_params)
     if @app.save
-      redirect_to apps_path, notice: "App created successfully."
+      redirect_to edit_app_path(@app), notice: "App created successfully."
     else
       render :new, status: :unprocessable_entity
     end
