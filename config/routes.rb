@@ -12,8 +12,6 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "page#index"
 
-  put "theme", to: "page#toggle_theme", as: :toggle_theme
-
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions: 'users/sessions'
@@ -22,6 +20,12 @@ Rails.application.routes.draw do
   resources :apps do
     member do
       put "regenerate_api_key"
+    end
+  end
+
+  resources :settings, only: [:index] do
+    collection do
+      patch "", to: "settings#update"
     end
   end
 

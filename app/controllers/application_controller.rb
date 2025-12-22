@@ -11,7 +11,11 @@ class ApplicationController < ActionController::Base
   private
 
   def set_theme
-    @theme = cookies[:theme] || 'light'
+    if current_user.nil?
+      return 'light'
+    end
+
+    @theme = Setting.first.default_theme || 'light'
   end
 
 

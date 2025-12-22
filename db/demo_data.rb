@@ -57,7 +57,7 @@ def random_context
   {
     user_id: rand(1..1000),
     session_id: Faker::Alphanumeric.alphanumeric(number: 10),
-    token: Faker::Alphanumeric.alphanumeric(number: 15),
+    token: Faker::Alphanumeric.alphanumeric(number: 30),
     feature_flag: ["new_ui", "beta_feature", "dark_mode"].sample
   }
 end

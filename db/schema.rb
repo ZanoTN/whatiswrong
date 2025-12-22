@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_12_06_083425) do
+ActiveRecord::Schema[8.1].define(version: 2025_12_22_173139) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -34,6 +34,13 @@ ActiveRecord::Schema[8.1].define(version: 2025_12_06_083425) do
     t.datetime "occurred_at", null: false
     t.datetime "updated_at", null: false
     t.index ["app_id"], name: "index_messages_on_app_id"
+  end
+
+  create_table "settings", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "default_theme", default: "light", null: false
+    t.string "language", default: "en", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

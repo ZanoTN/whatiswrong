@@ -1,0 +1,17 @@
+# == Schema Information
+#
+# Table name: settings
+#
+#  id            :bigint           not null, primary key
+#  default_theme :string           default("light"), not null
+#  language      :string           default("en"), not null
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#
+require "test_helper"
+
+class SettingTest < ActiveSupport::TestCase
+  # test "the truth" do
+  #   assert true
+  # end
+end

@@ -1,0 +1,37 @@
+<h2 class="page-title">Settings</h2>
+
+<%= form_with(model: @settings, url: settings_path, method: :patch, local: true) do |form| %>
+  <div class="card mt-4" data-controller="app-form">
+    <div class="card-status-top bg-azure"></div>
+    <div class="card-body">
+      <%= render "layouts/form_errors", model: @settings %>
+
+      <div class="row g-3">
+        <div class="col-12 col-md-6">
+          <%= form.label :language, class: "form-label" %>
+          <%= form.select :language,
+                          [["English", "en"]],
+                          {},
+                          class: "form-select",
+                          required: true %>
+        </div>
+
+        <div class="col-12 col-md-6">
+          <%= form.label :default_theme, class: "form-label" %>
+          <%= form.select :default_theme,
+                          [["Light", "light"], ["Dark", "dark"]],
+                          {},
+                          class: "form-select",
+                          required: true %>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer d-flex flex-row justify-content-between align-items-center">
+      <%= link_to "Cancel", "javascript:history.back()", class: "link link-secondary" %>
+
+      <div>
+        <%= form.submit class: "btn btn-azure" %>
+      </div>
+    </div>
+  </div>
+<% end %>
