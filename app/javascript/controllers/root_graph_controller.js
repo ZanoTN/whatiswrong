@@ -43,8 +43,8 @@ export default class extends Controller {
         name: "Warnings",
         data: data.warnings
       }, {
-        name: "Others",
-        data: data.others
+        name: "Info",
+        data: data.info
       }],
       tooltip: {
         theme: theme

@@ -30,7 +30,7 @@ def generate_demo_data
        Message.create(
         app: app,
         message: Faker::Lorem.sentence(word_count: 10),
-        context: Faker::Lorem.sentence(word_count: 5),
+        context: random_context(),
         level: %w[info warning error error error error].sample,
         backtrace: Faker::Lorem.paragraph(sentence_count: 3),
 
@@ -51,6 +51,15 @@ def generate_unique_app_names(number_of_names)
   end
 
   app_names.to_a
+end
+
+def random_context
+  {
+    user_id: rand(1..1000),
+    session_id: Faker::Alphanumeric.alphanumeric(number: 10),
+    token: Faker::Alphanumeric.alphanumeric(number: 15),
+    feature_flag: ["new_ui", "beta_feature", "dark_mode"].sample
+  }
 end
 
 

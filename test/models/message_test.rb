@@ -2,7 +2,7 @@
 #
 # Table name: messages
 #
-#  id          :integer          not null, primary key
+#  id          :bigint           not null, primary key
 #  backtrace   :text
 #  context     :text
 #  level       :string           not null
@@ -18,7 +18,7 @@
 #
 # Foreign Keys
 #
-#  app_id  (app_id => apps.id)
+#  fk_rails_...  (app_id => apps.id)
 #
 require "test_helper"
 

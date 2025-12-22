@@ -14,7 +14,7 @@ class PageController < ApplicationController
 
     message_count_errors = []
     message_count_warnings = []
-    message_count_others = []
+    message_count_info = []
 
     # Fill in missing dates with zero counts
     labels = []
@@ -24,14 +24,14 @@ class PageController < ApplicationController
 
       message_count_errors[i] ||= messages.select { |m| m.level == 'error' }.count { |m| m.occurred_at.to_date == date }
       message_count_warnings[i] ||= messages.select { |m| m.level == 'warning' }.count { |m| m.occurred_at.to_date == date }
-      message_count_others[i] ||= messages.select { |m| !['error', 'warning'].include?(m.level) }.count { |m| m.occurred_at.to_date == date }
+      message_count_info[i] ||= messages.select { |m| m.level == 'info' }.count { |m| m.occurred_at.to_date == date }
     end
 
     @graph_data = {
       labels: labels,
       errors: message_count_errors,
       warnings: message_count_warnings,
-      others: message_count_others
+      info: message_count_info
     }
   end
 

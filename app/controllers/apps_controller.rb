@@ -3,7 +3,13 @@ class AppsController < ApplicationController
   before_action :set_app, only: [ :edit, :update, :destroy, :regenerate_api_key ]
 
   def index
-    @apps = App.order(:name).page(params[:page]).per(20)
+    @apps = App.order(:name)
+
+    if params[:search].present?
+      @apps = @apps.where("name ILIKE ?", "%#{params[:search]}%")
+    end
+
+    @apps = @apps.page(params[:page]).per(20)
   end
 
   def edit

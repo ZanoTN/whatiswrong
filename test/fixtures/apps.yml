@@ -8,7 +8,7 @@
 #
 # Table name: apps
 #
-#  id           :integer          not null, primary key
+#  id           :bigint           not null, primary key
 #  api_key      :string           not null
 #  last_used_at :datetime
 #  name         :string           not null

@@ -2,6 +2,37 @@
 
 <div class="card mt-4">
   <div class="card-status-top bg-azure"></div>
+
+  <div class="card-header">
+    <%= form_with url: messages_path, method: :get, local: true, class: 'w-100' do |f| %>
+      <div class="row g-2 align-items-center">
+        <div class="col-auto">
+          <%= f.label :occurred_at_start, 'Occurred At (Start)', class: 'form-label' %>
+          <%= f.date_field :occurred_at_start, value: params[:occurred_at_start], class: 'form-control' %>
+        </div>
+
+        <div class="col-auto">
+          <%= f.label :occurred_at_end, 'Occurred At (End)', class: 'form-label' %>
+          <%= f.date_field :occurred_at_end, value: params[:occurred_at_end], class: 'form-control' %>
+        </div>
+        
+        <div class="col-auto">
+          <%= f.label :app_id, 'App', class: 'form-label' %>
+          <%= f.select :app_id, options_from_collection_for_select(@apps, :id, :name, params[:app_id]), { include_blank: 'All Apps' }, class: 'form-select' %>
+        </div>
+
+        <div class="col-auto">
+          <%= f.label :level, 'Level', class: 'form-label' %>
+          <%= f.select :level, options_for_select([['All Levels', ''], ['Error', 'error'], ['Warning', 'warning'], ['Info', 'info']], params[:level]), {}, class: 'form-select' %>
+        </div>
+
+        <div class="col-auto mt-4">
+          <%= f.submit 'Filter', class: 'btn btn-primary mt-2' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
   <div class="table-responsive">
     <table class="table table-vcenter card-table">
       <thead>
