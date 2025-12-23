@@ -1,9 +1,14 @@
 <div class="w-max-device-form mx-auto mt-6 card p-4">
+  <div class="d-flex mb-4 align-items-center gap-3 justify-content-center">
+    <img src="/icon.png" alt="WhatIsWrong" class="navbar-brand-image" style="height: 48px; width: 48px;" />
+    <h1 class="my-auto display-4 fw-bold">WhatIsWrong</h1>
+  </div>
+
+
   <p class="h1 mb-4">Log in</p>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="w-full">
-
       <%= render "layouts/form_errors", model: resource %>
 
       <%= f.label :username, class: "form-label mb-2" %>

@@ -19,3 +19,18 @@ html, body {
 .w-max-device-form {
     max-width: 30rem;
 }
+
+.toast-out-animation {
+    animation: toast-out-right 0.4s ease-in 3s forwards;
+}
+
+@keyframes toast-out-right {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+}

@@ -21,6 +21,10 @@ Rails.application.routes.draw do
     member do
       put "regenerate_api_key"
     end
+
+    collection do
+      get "docs", to: "apps#api_docs"
+    end
   end
 
   resources :settings, only: [:index] do

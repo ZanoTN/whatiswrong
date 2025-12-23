@@ -33,8 +33,8 @@ class Message < ApplicationRecord
   }
 
   before_create do
-    if occurred_at.nil?
-      occurred_at = DateTime.now
+    if self.occurred_at.nil?
+      self.occurred_at = DateTime.now
     end
   end
 

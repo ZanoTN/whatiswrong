@@ -5,12 +5,10 @@ class PageController < ApplicationController
     @app_count = App.count
     @message_count = Message.count
 
-
     date_range = 30
 
     start_date = date_range.days.ago.beginning_of_day
     messages = Message.where('occurred_at >= ?', start_date)
-
 
     message_count_errors = []
     message_count_warnings = []

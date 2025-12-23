@@ -32,6 +32,10 @@
               </div>
             </div>
           </div>
+          <div class="form-hint">
+            <%= link_to "How to use the API key?", docs_apps_path(key: @app.api_key), target: "_blank", class: "link link-secondary" %>
+          </div>
+
         </div>
 
         <% if @app.persisted? %>

@@ -1,5 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
+import "https://cdn.jsdelivr.net/npm/apexcharts"
+
 // Connects to data-controller="root-graph"
 export default class extends Controller {
   static targets = [ "graph" ]
