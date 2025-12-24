@@ -8,12 +8,8 @@ class ApplicationRecord < ActiveRecord::Base
   end
 
   def self.enum_options(enum_name)
-    stuff = public_send(enum_name.to_s.pluralize).keys.map do |k|
+    public_send(enum_name.to_s.pluralize).keys.map do |k|
       [human_enum(enum_name, k), k]
     end
-
-    Rails.logger.debug { "Enum options for #{enum_name}: #{stuff.inspect}" }
-
-    stuff
   end
 end
