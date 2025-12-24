@@ -1,0 +1,40 @@
+it:
+  activerecord:
+    models:
+      user:
+        one: "Utente"
+        other: "Utenti"
+      app:
+        one: "Applicazione"
+        other: "Applicazioni"
+      message:
+        one: "Messaggio"
+        other: "Messaggi"
+      setting:
+        one: "Impostazione"
+        other: "Impostazioni"
+    attributes:
+      user:
+        username: "Nome utente"
+        password: "Password"
+        password_confirmation: "Conferma Password"
+        remember_me: "Ricordami"
+      message:
+        message: "Messaggio"
+        context: "Contesto"
+        level: "Livello"
+        occurred_at: "Data di Occorrenza"
+        backtrace: "Backtrace"
+      app:
+        name: "Nome"
+        api_key: "API Key"
+        last_used_at: "Ultimo utilizzo"
+      setting:
+        default_theme: "Tema predefinito"
+        default_themes:
+          light: "Chiaro"
+          dark: "Scuro"
+        language: "Lingua"
+        languages:
+          en: "Inglese"
+          it: "Italiano"

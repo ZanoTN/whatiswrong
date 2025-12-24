@@ -7,6 +7,7 @@ def clean_all_database
   User.destroy_all
   Message.destroy_all
   App.destroy_all
+  Setting.destroy_all
 
   puts "Database cleaned."
 end

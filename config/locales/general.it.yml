@@ -1,0 +1,14 @@
+it:
+  general:
+    delete: "Rimouovi"
+    edit: "Modifica"
+    save: "Salva"
+    cancel: "Annulla"
+    update: "Aggiorna"
+    create: "Crea"
+    search: "Cerca"
+    new: "Nuovo"
+    never_used: "Mai usato"
+    success: "Successo"
+    error: "Errore"
+    warning: "Attenzione"

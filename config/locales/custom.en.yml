@@ -1,0 +1,25 @@
+en:
+  custom:
+    auth:
+      login: "Login"
+      register: "Register"
+    navbar:
+      profile: "Profile"
+      feedback: "Feedback"
+      logout: "Logout"
+      are_you_sure_logout: "Are you sure you want to log out?"
+    setting:
+      need_to_reload: "You need to reload the page for changes to take effect."
+    app:
+      how_to_use_api_key: "How to use the API key?"
+      are_you_sure_regenerate_api_key: "Are you sure you want to regenerate the API key? This action cannot be undone."
+      are_you_sure_delete_app: "Are you sure you want to delete this application? This action cannot be undone."
+      new_app: "New Application"
+      edit_app: "Edit Application: %{app_name}"
+      message:
+        app_not_found: "Application not found."
+        api_key_regenerated: "API key regenerated successfully."
+        api_key_not_regenerated: "API key regeneration failed."
+        app_deleted: "Application deleted successfully."
+        app_created: "Application created successfully."
+        app_updated: "Application updated successfully."

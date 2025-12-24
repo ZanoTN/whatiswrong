@@ -19,7 +19,7 @@
             <div class="col-auto">
               <% if @app.persisted? %>
                 <%= link_to regenerate_api_key_app_path(@app.id),
-                              data: { turbo_method: :put, turbo_confirm: "Are you sure you want to regenerate the API key? This action cannot be undone." },
+                              data: { turbo_method: :put, turbo_confirm: t("custom.app.are_you_sure_regenerate_api_key") },
                               disabled: @app.persisted? ? false : true,
                               class: "btn flex-center btn-icon btn-azure" do %>
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-refresh"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4" /><path d="M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4" /></svg>
@@ -33,26 +33,28 @@
             </div>
           </div>
           <div class="form-hint">
-            <%= link_to "How to use the API key?", docs_apps_path(key: @app.api_key), target: "_blank", class: "link link-secondary" %>
+            <%= link_to t("custom.app.how_to_use_api_key"), docs_apps_path(key: @app.api_key), target: "_blank", class: "link link-secondary" %>
           </div>
 
         </div>
 
         <% if @app.persisted? %>
           <div class="col-12">
-            <p class="fw-bold mb-1">Last used at</p>
-            <p class="mb-0"><%= @app.last_used_at ? format_datetime(@app.last_used_at) : "Never used" %></p>
+            <p class="fw-bold mb-1"><%= App.human_attribute_name(:last_used_at) %></p>
+            <p class="mb-0"><%= @app.last_used_at ? format_datetime(@app.last_used_at) : t("general.never_used") %></p>
           </div>
         <% end %>
       </div>
     </div>
     <div class="card-footer d-flex flex-row justify-content-between align-items-center">
-      <%= link_to "Cancel", "javascript:history.back()", class: "link link-secondary" %>
+      <%= link_to t("general.cancel"), "javascript:history.back()", class: "link link-secondary" %>
 
       <div>
-        <%= form.submit class: "btn btn-azure" %>
         <% if @app.persisted? %>
-          <%= link_to "Delete App", app_path(@app), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this app? This action cannot be undone." }, class: "btn btn-danger ms-2" %>
+          <%= form.submit t("general.save"), class: "btn btn-azure" %>
+          <%= link_to t("general.delete"), app_path(@app), data: { turbo_method: :delete, turbo_confirm: t("custom.app.are_you_sure_delete_app") }, class: "btn btn-danger ms-2" %>
+        <% else %>
+          <%= form.submit t("general.create"), class: "btn btn-azure" %>
         <% end %>
       </div>
     </div>

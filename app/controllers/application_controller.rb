@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   allow_browser versions: :modern
 
   before_action :set_theme
-
+  before_action :set_locale
 
   # Changes to the importmap will invalidate the etag for HTML responses
   stale_when_importmap_changes
@@ -15,8 +15,10 @@ class ApplicationController < ActionController::Base
       return 'light'
     end
 
-    @theme = Setting.first.default_theme || 'light'
+    @theme = Setting&.first&.default_theme || 'light'
   end
 
-
+  def set_locale
+    I18n.locale = Setting&.first&.language || I18n.default_locale
+  end
 end

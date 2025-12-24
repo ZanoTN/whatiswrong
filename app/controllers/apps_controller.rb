@@ -17,7 +17,7 @@ class AppsController < ApplicationController
 
   def update
     if @app.update(app_params)
-      redirect_to apps_path, notice: "App updated successfully."
+      redirect_to apps_path, notice: t("custom.app.message.app_updated")
     else
       render :edit, status: :unprocessable_entity
     end
@@ -30,7 +30,7 @@ class AppsController < ApplicationController
   def create
     @app = App.new(app_params)
     if @app.save
-      redirect_to edit_app_path(@app), notice: "App created successfully."
+      redirect_to edit_app_path(@app), notice: t("custom.app.message.app_created")
     else
       render :new, status: :unprocessable_entity
     end
@@ -38,15 +38,15 @@ class AppsController < ApplicationController
 
   def destroy
     @app.destroy
-    redirect_to apps_path, notice: "App deleted successfully."
+    redirect_to apps_path, notice: t("custom.app.message.app_deleted")
   end
 
   def regenerate_api_key
     @app.generate_api_key
     if @app.save
-      flash[:notice] = "API key regenerated successfully."
+      flash[:notice] = t("custom.app.message.api_key_regenerated")
     else
-      flash[:alert] = "Failed to regenerate API key."
+      flash[:alert] = t("custom.app.message.api_key_not_regenerated")
     end
     redirect_to edit_app_path(@app)
   end
@@ -65,7 +65,7 @@ class AppsController < ApplicationController
   def set_app
     @app = App.find(params[:id])
     if @app.nil?
-      redirect_to apps_path, alert: "App not found."
+      redirect_to apps_path, alert: t("custom.app.message.app_not_found")
     end
   end
 end

@@ -1,4 +1,4 @@
-<h2 class="page-title">Settings</h2>
+<h2 class="page-title"><%= Setting.model_name.human(count: :many) %></h2>
 
 <%= form_with(model: @settings, url: settings_path, method: :patch, local: true) do |form| %>
   <div class="card mt-4" data-controller="app-form">
@@ -10,7 +10,7 @@
         <div class="col-12 col-md-6">
           <%= form.label :language, class: "form-label" %>
           <%= form.select :language,
-                          [["English", "en"]],
+                          Setting.enum_options(:language),
                           {},
                           class: "form-select",
                           required: true %>
@@ -19,20 +19,19 @@
         <div class="col-12 col-md-6">
           <%= form.label :default_theme, class: "form-label" %>
           <%= form.select :default_theme,
-                          [["Light", "light"], ["Dark", "dark"]],
+                          Setting.enum_options(:default_theme),
                           {},
                           class: "form-select",
                           required: true %>
-          <div class="form-hint">Need to reload the page to apply the theme.</div>
-
+          <div class="form-hint"><%= t("custom.setting.need_to_reload") %></div>
         </div>
       </div>
     </div>
     <div class="card-footer d-flex flex-row justify-content-between align-items-center">
-      <%= link_to "Cancel", "javascript:history.back()", class: "link link-secondary" %>
+      <%= link_to t("general.cancel"), "javascript:history.back()", class: "link link-secondary" %>
 
       <div>
-        <%= form.submit class: "btn btn-azure" %>
+        <%= form.submit t("general.save"), class: "btn btn-azure" %>
       </div>
     </div>
   </div>

@@ -1,0 +1,14 @@
+en:
+  general:
+    delete: "Delete"
+    edit: "Edit"
+    save: "Save"
+    cancel: "Cancel"
+    update: "Update"
+    create: "Create"
+    search: "Search"
+    new: "New"
+    never_used: "Never Used"
+    success: "Success"
+    error: "Error"
+    warning: "Warning"

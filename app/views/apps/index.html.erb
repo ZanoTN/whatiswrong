@@ -1,4 +1,4 @@
-<h2 class="page-title">Apps</h2>
+<h2 class="page-title"><%= App.model_name.human(count: :many) %></h2>
 
 <div class="card mt-4">
   <div class="card-status-top bg-azure"></div>
@@ -13,10 +13,10 @@
             <span class="input-icon-addon">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-search"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" /><path d="M21 21l-6 -6" /></svg>
             </span>
-            <%= text_field_tag :search, params[:search], class: 'form-control', placeholder: 'search' %>
+            <%= text_field_tag :search, params[:search], class: 'form-control', placeholder: t("general.search") %>
           </div>
         <% end %>
-        <%= link_to 'New App', new_app_path, class: 'btn btn-primary' %>
+        <%= link_to t("general.new"), new_app_path, class: 'btn btn-azure' %>
       </div>
     </div>
   </div>
@@ -25,7 +25,7 @@
     <table class="table table-vcenter card-table">
       <thead>
       <tr>
-        <th>Name</th>
+        <th><%= App.human_attribute_name(:name) %></th>
         <th></th>
       </tr>
       </thead>
@@ -34,7 +34,7 @@
           <tr>
             <td><%= app.name %></td>
             <td class="text-end">
-              <%= link_to 'Edit', edit_app_path(app.id), class: 'link link-primary' %>
+              <%= link_to t("general.edit"), edit_app_path(app.id), class: 'link link-primary' %>
             </td>
           </tr>
         <% end %>
