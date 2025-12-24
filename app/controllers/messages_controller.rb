@@ -15,11 +15,18 @@ class MessagesController < ApplicationController
     end
 
     if params[:occurred_at_start].present?
-      @messages = @messages.where("occurred_at >= ?", params[:occurred_at_start])
+      date = DateTime.parse(params[:occurred_at_start]) rescue nil
+      @messages = @messages.where("occurred_at >= ?", date.beginning_of_day) if date
     end
 
     if params[:occurred_at_end].present?
-      @messages = @messages.where("occurred_at <= ?", params[:occurred_at_end])
+      date = DateTime.parse(params[:occurred_at_end]) rescue nil
+      @messages = @messages.where("occurred_at <= ?", date.end_of_day) if date
+    end
+
+    if params[:search].present?
+      search = "%#{params[:search].to_s.downcase}%"
+      @messages = @messages.where("LOWER(message) LIKE ? OR LOWER(backtrace) LIKE ? OR LOWER(context) LIKE ?", search, search, search)
     end
 
     @messages = @messages.page(params[:page]).per(20)

@@ -6,7 +6,7 @@ class AppsController < ApplicationController
     @apps = App.order(:name)
 
     if params[:search].present?
-      @apps = @apps.where("name ILIKE ?", "%#{params[:search]}%")
+      @apps = @apps.where("LOWER(name) LIKE ?", "%#{params[:search]}%")
     end
 
     @apps = @apps.page(params[:page]).per(20)

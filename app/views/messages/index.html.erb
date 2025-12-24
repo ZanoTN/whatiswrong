@@ -4,30 +4,40 @@
   <div class="card-status-top bg-azure"></div>
 
   <div class="card-header">
-    <%= form_with url: messages_path, method: :get, local: true, class: 'w-100' do |f| %>
-      <div class="row g-2 align-items-center">
-        <div class="col-auto">
-          <%= f.label :occurred_at_start, 'Occurred At (Start)', class: 'form-label' %>
-          <%= f.date_field :occurred_at_start, value: params[:occurred_at_start], class: 'form-control' %>
-        </div>
+    <%= form_with url: messages_path, method: :get, local: true, class: "w-100" do |f| %>
+      <div class="d-flex justify-content-between">
+        <div class="d-flex gap-2 align-items-end">
+          <div class="form-group">
+            <%= f.label :occurred_at_start, 'Occurred At (Start)', class: 'form-label-small' %>
+            <%= f.date_field :occurred_at_start, value: params[:occurred_at_start], class: 'form-control form-control-sm' %>
+          </div>
 
-        <div class="col-auto">
-          <%= f.label :occurred_at_end, 'Occurred At (End)', class: 'form-label' %>
-          <%= f.date_field :occurred_at_end, value: params[:occurred_at_end], class: 'form-control' %>
-        </div>
-        
-        <div class="col-auto">
-          <%= f.label :app_id, 'App', class: 'form-label' %>
-          <%= f.select :app_id, options_from_collection_for_select(@apps, :id, :name, params[:app_id]), { include_blank: 'All Apps' }, class: 'form-select' %>
-        </div>
+          <div class="form-group">
+            <%= f.label :occurred_at_end, 'Occurred At (End)', class: 'form-label-small' %>
+            <%= f.date_field :occurred_at_end, value: params[:occurred_at_end], class: 'form-control form-control-sm' %>
+          </div>
 
-        <div class="col-auto">
-          <%= f.label :level, 'Level', class: 'form-label' %>
-          <%= f.select :level, options_for_select([['All Levels', ''], ['Error', 'error'], ['Warning', 'warning'], ['Info', 'info']], params[:level]), {}, class: 'form-select' %>
-        </div>
+          <div class="form-group">
+            <%= f.label :app_id, 'App', class: 'form-label-small' %>
+            <%= f.select :app_id, options_from_collection_for_select(@apps, :id, :name, params[:app_id]), { include_blank: 'All Apps' }, class: 'form-select form-select-sm' %>
+          </div>
 
-        <div class="col-auto mt-4">
-          <%= f.submit 'Filter', class: 'btn btn-primary mt-2' %>
+          <div class="form-group">
+            <%= f.label :level, 'Level', class: 'form-label-small' %>
+            <%= f.select :level, options_for_select([['All Levels', ''], ['Error', 'error'], ['Warning', 'warning'], ['Info', 'info']], params[:level]), {}, class: 'form-select form-select-sm' %>
+          </div>
+
+          <div class="form-group">
+            <%= f.submit 'Filter', class: 'btn btn-primary' %>
+          </div>
+        </div>
+        <div class="d-flex gap-2 align-items-end">
+          <div class="input-icon">
+            <span class="input-icon-addon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-search"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" /><path d="M21 21l-6 -6" /></svg>
+            </span>
+            <%= text_field_tag :search, params[:search], class: 'form-control', placeholder: 'Search' %>
+          </div>
         </div>
       </div>
     <% end %>
