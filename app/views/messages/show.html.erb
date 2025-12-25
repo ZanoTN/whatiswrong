@@ -21,7 +21,7 @@
 
       <div class="col-12 d-flex flex-column">
         <p class="fw-bold mb-1"><%= Message.human_attribute_name(:context) %>:</p>
-        <pre class="p-0"><code class="bg-body-tertiary text-body language-json"><%= format_json(@message.context) %></code></pre>
+        <pre class="p-0"><code class="bg-body-tertiary text-body language-json"><%= raw format_json(@message.context) %></code></pre>
       </div>
 
       <div class="col-12 d-flex flex-column">

@@ -32,6 +32,11 @@ class Message < ApplicationRecord
     error: 'error',
   }
 
+  before_validation do
+    self.context = Message.parse_json_to_string(self.context)
+    self.backtrace = Message.parse_json_to_string(self.backtrace)
+  end
+
   before_create do
     if self.occurred_at.nil?
       self.occurred_at = DateTime.now
@@ -41,5 +46,22 @@ class Message < ApplicationRecord
   after_create do
     app.last_used_at = DateTime.now
     app.save!
+  end
+
+  private
+
+  def self.parse_json_to_string(value)
+    return nil if value.nil?
+
+    if value.is_a?(String)
+      begin
+        JSON.parse(value)
+        value
+      rescue JSON::ParserError
+        JSON.generate({ raw: value })
+      end
+    else
+      JSON.generate(value)
+    end
   end
 end

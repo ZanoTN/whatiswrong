@@ -19,13 +19,13 @@ module ApplicationHelper
     date.strftime("%d %m %Y")
   end
 
-  def format_json(json_object)
-    # Indent: 2 spaces
-    # Sort keys: true
-    # Ensure ASCII: false
-    # New lines after commas and colons
-
-    json_object
+  def format_json(string)
+    begin
+      json_object = JSON.parse(string)
+      JSON.pretty_generate(json_object, indent: '  ')
+    rescue JSON::ParserError
+      "Invalid JSON"
+    end
   end
 
   def app_version
