@@ -3,31 +3,31 @@
 <div class="card mt-4" data-controller="highlight">
   <div class="<%= card_top_class(@message) %>"></div>
   <div class="card-body">
-    <div class="row">
-      <div class="col d-flex flex-column mb-3">
+    <div class="row g-3">
+      <div class="col-12 col-md-6 d-flex flex-column">
         <p class="fw-bold mb-1"><%= Message.human_attribute_name(:level) %>:</p>
         <p class="mb-0 <%= level_class(@message) %> me-auto"><%= @message.level %></p>
       </div>
 
-      <div class="col d-flex flex-column mb-3">
+      <div class="col-12 col-md-6 d-flex flex-column">
         <p class="fw-bold mb-1"><%= Message.human_attribute_name(:occurred_at) %>:</p>
         <p class="mb-0"><%= format_datetime(@message.occurred_at) %></p>
       </div>
-    </div>
 
-    <div class="col d-flex flex-column mb-3">
-      <p class="fw-bold mb-1"><%= Message.human_attribute_name(:message) %>:</p>
-      <p class="mb-0"><%= @message.message%></p>
-    </div>
+      <div class="col-12 d-flex flex-column">
+        <p class="fw-bold mb-1"><%= Message.human_attribute_name(:message) %>:</p>
+        <p class="mb-0"><%= @message.message%></p>
+      </div>
 
-    <div class="col d-flex flex-column mb-3">
-      <p class="fw-bold mb-1"><%= Message.human_attribute_name(:context) %>:</p>
-      <pre class="p-0"><code class="bg-body-tertiary text-body language-json"><%= format_json(@message.context) %></code></pre>
-    </div>
+      <div class="col-12 d-flex flex-column">
+        <p class="fw-bold mb-1"><%= Message.human_attribute_name(:context) %>:</p>
+        <pre class="p-0"><code class="bg-body-tertiary text-body language-json"><%= format_json(@message.context) %></code></pre>
+      </div>
 
-    <div class="col d-flex flex-column mb-3">
-      <p class="fw-bold mb-1"><%= Message.human_attribute_name(:backtrace) %>:</p>
-      <pre class="bg-body-tertiary text-body p-0"><code class="bg-body-tertiary text-body language-json"><%= @message.backtrace%></code></pre>
+      <div class="col-12 d-flex flex-column">
+        <p class="fw-bold mb-1"><%= Message.human_attribute_name(:backtrace) %>:</p>
+        <pre class="bg-body-tertiary text-body p-0"><code class="bg-body-tertiary text-body language-json"><%= @message.backtrace%></code></pre>
+      </div>
     </div>
   </div>
 </div>

@@ -5,7 +5,7 @@
 
   <div class="card-header">
     <%= form_with url: messages_path, method: :get, local: true, class: "w-100" do |f| %>
-      <div class="d-flex justify-content-between">
+      <div class="d-flex justify-content-between overflow-y-auto">
         <div class="d-flex gap-2 align-items-end">
           <div class="form-group">
             <%= f.label :occurred_at_start, t("custom.message.occurred_at_start"), class: 'form-label-small' %>
