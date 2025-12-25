@@ -6,7 +6,7 @@
         <h1 class="display-4">
           <%= @message_count %>
         </h1>
-        <h2 class="card-title">Messages</h2>
+        <h2 class="card-title"><%= Message.model_name.human(count: :many) %></h2>
       </div>
     </div>
   </div>
@@ -17,7 +17,7 @@
         <h1 class="display-4">
           <%= @app_count %>
         </h1>
-        <h2 class="card-title">Apps</h2>
+        <h2 class="card-title"><%= App.model_name.human(count: :many) %></h2>
       </div>
     </div>
   </div>

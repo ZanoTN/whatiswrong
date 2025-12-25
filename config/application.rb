@@ -23,11 +23,13 @@ module Whatiswrong
     #
     config.time_zone = "UTC"
 
-    config.i18n.default_locale = :it
+    config.i18n.default_locale = :en
     config.i18n.available_locales = [:en, :it]
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
 
     # config.eager_load_paths << Rails.root.join("extras")
 
+    # Version of app
+    config.x.app_version = '0.0.0'
   end
 end

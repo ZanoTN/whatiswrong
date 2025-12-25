@@ -27,4 +27,8 @@ module ApplicationHelper
 
     json_object
   end
+
+  def app_version
+    Rails.configuration.x.app_version
+  end
 end

@@ -1,16 +1,28 @@
 en:
   custom:
+    api_docs:
+      title: "API Documentation"
+      title_examples: "Examples"
+      title_endpoint: "Endpoint"
+      description_endpoint_1: "Make a PUT request to the following endpoint"
+      description_endpoint_2: "with the following JSON body:"
     auth:
       login: "Login"
       register: "Register"
     navbar:
       profile: "Profile"
       feedback: "Feedback"
+      api_documentation: "API Documentation"
       logout: "Logout"
       are_you_sure_logout: "Are you sure you want to log out?"
     setting:
       need_to_reload: "You need to reload the page for changes to take effect."
+    message:
+      occurred_at_start: "Occurred at (start)"
+      occurred_at_end: "Occurred at (end)"
+      all_levels: "All Levels"
     app:
+      all_apps: "All Applications"
       how_to_use_api_key: "How to use the API key?"
       are_you_sure_regenerate_api_key: "Are you sure you want to regenerate the API key? This action cannot be undone."
       are_you_sure_delete_app: "Are you sure you want to delete this application? This action cannot be undone."

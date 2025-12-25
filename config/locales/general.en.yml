@@ -12,3 +12,6 @@ en:
     success: "Success"
     error: "Error"
     warning: "Warning"
+    filter: "Filter"
+    view: "View"
+    work_in_progress: "The application is under development, this feature will be available soon. ☺"

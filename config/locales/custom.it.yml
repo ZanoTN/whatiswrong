@@ -1,16 +1,28 @@
 it:
   custom:
+    api_docs:
+      title: "Documentazione API"
+      title_examples: "Esempi"
+      title_endpoint: "Endpoint"
+      description_endpoint_1: "Esegui una richiesta PUT a questo endpoint"
+      description_endpoint_2: "con il seguente body JSON:"
     auth:
       login: "Accedi"
       register: "Registrati"
     navbar:
       profile: "Profilo"
       feedback: "Feedback"
+      api_documentation: "Documentazione API"
       logout: "Disconnetti"
       are_you_sure_logout: "Sei sicuro di voler uscire?"
     setting:
       need_to_reload: "Devi ricaricare la pagina per applicare le nuove impostazioni."
+    message:
+      occurred_at_start: "Data di occorrenza (inizio)"
+      occurred_at_end: "Data di occorrenza (fine)"
+      all_levels: "Tutti i Livelli"
     app:
+      all_apps: "Tutte le Applicazioni"
       how_to_use_api_key: "Come utilizzare la chiave API"
       are_you_sure_regenerate_api_key: "Sei sicuro di voler rigenerare la chiave API? Questa azione non può essere annullata."
       are_you_sure_delete_app: "Sei sicuro di voler eliminare questa applicazione? Questa azione non può essere annullata."

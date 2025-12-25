@@ -12,3 +12,6 @@ it:
     success: "Successo"
     error: "Errore"
     warning: "Attenzione"
+    filter: "Filtra"
+    view: "Visualizza"
+    work_in_progress: "L'applicazione è in fase di sviluppo, la funzionalità arriverà presto. ☺"

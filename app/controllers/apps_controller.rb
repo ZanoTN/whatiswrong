@@ -51,11 +51,6 @@ class AppsController < ApplicationController
     redirect_to edit_app_path(@app)
   end
 
-  def api_docs
-    @key = params[:key]
-    @app_url = request.base_url
-  end
-
   private
 
   def app_params

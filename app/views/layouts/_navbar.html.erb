@@ -63,8 +63,9 @@
             </div>
           </a>
           <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-            <%= link_to t("custom.navbar.profile"), "#", class: "dropdown-item" %>
-            <%= link_to t("custom.navbar.feedback"), "#", class: "dropdown-item" %>
+            <%= link_to t("custom.navbar.profile"), "", class: "dropdown-item", onclick: "alert(\"#{t("general.work_in_progress")}\"); return false;" %>
+            <%= link_to t("custom.navbar.feedback"), "https://github.com/ZanoTN/whatiswrong", class: "dropdown-item", target: "_blank", rel: "noopener" %>
+            <%= link_to t("custom.navbar.api_documentation"), api_docs_path, class: "dropdown-item" %>
             <div class="dropdown-divider"></div>
             <%= button_to t("custom.navbar.logout"),
                           destroy_user_session_path,

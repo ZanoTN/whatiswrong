@@ -32,4 +32,9 @@ class PageController < ApplicationController
       info: message_count_info
     }
   end
+
+  def api_docs
+    @key = params[:key]
+    @app_url = request.base_url
+  end
 end

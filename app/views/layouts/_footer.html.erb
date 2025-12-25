@@ -1,10 +1,12 @@
-<footer class="footer footer-transparent mt-4">
+<footer class="footer footer-transparent">
   <div class="container">
     <div class="text-center">
       &copy; <%= Time.current.year %>
       <%= link_to 'ZanoTN', "https://zanotn.space", target: "_blank", rel: "noopener", class: "link-secondary" %>
-      - Theme by
+      • Theme by
       <%= link_to 'Tabler.io', "https://tabler.io", target: "_blank", rel: "noopener", class: "link-secondary" %>
+      • Version
+      <%= app_version %>
     </div>
   </div>
 </footer>

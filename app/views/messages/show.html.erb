@@ -1,33 +1,33 @@
-<h2 class="page-title">Message: <%= @message.id %></h2>
+<h2 class="page-title"><%= Message.model_name.human %>: <%= @message.id %></h2>
 
-<div class="card mt-4">
+<div class="card mt-4" data-controller="highlight">
   <div class="<%= card_top_class(@message) %>"></div>
   <div class="card-body">
     <div class="row">
       <div class="col d-flex flex-column mb-3">
-        <p class="fw-bold mb-1">Level:</p>
+        <p class="fw-bold mb-1"><%= Message.human_attribute_name(:level) %>:</p>
         <p class="mb-0 <%= level_class(@message) %> me-auto"><%= @message.level %></p>
       </div>
 
       <div class="col d-flex flex-column mb-3">
-        <p class="fw-bold mb-1">Occurred at:</p>
+        <p class="fw-bold mb-1"><%= Message.human_attribute_name(:occurred_at) %>:</p>
         <p class="mb-0"><%= format_datetime(@message.occurred_at) %></p>
       </div>
     </div>
 
     <div class="col d-flex flex-column mb-3">
-      <p class="fw-bold mb-1">Message:</p>
+      <p class="fw-bold mb-1"><%= Message.human_attribute_name(:message) %>:</p>
       <p class="mb-0"><%= @message.message%></p>
     </div>
 
     <div class="col d-flex flex-column mb-3">
-      <p class="fw-bold mb-1">Context:</p>
-      <pre class="bg-body-tertiary text-body mb-0"><%= format_json(@message.context) %></pre>
+      <p class="fw-bold mb-1"><%= Message.human_attribute_name(:context) %>:</p>
+      <pre class="p-0"><code class="bg-body-tertiary text-body language-json"><%= format_json(@message.context) %></code></pre>
     </div>
 
     <div class="col d-flex flex-column mb-3">
-      <p class="fw-bold mb-1">Backtrace:</p>
-      <pre class="bg-body-tertiary text-body mb-0"><%= @message.backtrace%></pre>
+      <p class="fw-bold mb-1"><%= Message.human_attribute_name(:backtrace) %>:</p>
+      <pre class="bg-body-tertiary text-body p-0"><code class="bg-body-tertiary text-body language-json"><%= @message.backtrace%></code></pre>
     </div>
   </div>
 </div>

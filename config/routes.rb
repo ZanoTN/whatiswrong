@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "page#index"
 
+  get "docs/api", to: "page#api_docs", as: :api_docs
+
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions: 'users/sessions'
@@ -20,10 +22,6 @@ Rails.application.routes.draw do
   resources :apps do
     member do
       put "regenerate_api_key"
-    end
-
-    collection do
-      get "docs", to: "apps#api_docs"
     end
   end
 

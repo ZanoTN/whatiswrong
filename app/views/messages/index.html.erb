@@ -1,4 +1,4 @@
-<h2 class="page-title">Messages</h2>
+<h2 class="page-title"><%= Message.model_name.human(count: 2) %></h2>
 
 <div class="card mt-4">
   <div class="card-status-top bg-azure"></div>
@@ -8,27 +8,27 @@
       <div class="d-flex justify-content-between">
         <div class="d-flex gap-2 align-items-end">
           <div class="form-group">
-            <%= f.label :occurred_at_start, 'Occurred At (Start)', class: 'form-label-small' %>
+            <%= f.label :occurred_at_start, t("custom.message.occurred_at_start"), class: 'form-label-small' %>
             <%= f.date_field :occurred_at_start, value: params[:occurred_at_start], class: 'form-control form-control-sm' %>
           </div>
 
           <div class="form-group">
-            <%= f.label :occurred_at_end, 'Occurred At (End)', class: 'form-label-small' %>
+            <%= f.label :occurred_at_end, t("custom.message.occurred_at_end"), class: 'form-label-small' %>
             <%= f.date_field :occurred_at_end, value: params[:occurred_at_end], class: 'form-control form-control-sm' %>
           </div>
 
           <div class="form-group">
-            <%= f.label :app_id, 'App', class: 'form-label-small' %>
-            <%= f.select :app_id, options_from_collection_for_select(@apps, :id, :name, params[:app_id]), { include_blank: 'All Apps' }, class: 'form-select form-select-sm' %>
+            <%= f.label :app_id, App.model_name.human(), class: 'form-label-small' %>
+            <%= f.select :app_id, options_from_collection_for_select(@apps, :id, :name, params[:app_id]), { include_blank: t("custom.app.all_apps") }, class: 'form-select form-select-sm' %>
           </div>
 
           <div class="form-group">
-            <%= f.label :level, 'Level', class: 'form-label-small' %>
-            <%= f.select :level, options_for_select([['All Levels', ''], ['Error', 'error'], ['Warning', 'warning'], ['Info', 'info']], params[:level]), {}, class: 'form-select form-select-sm' %>
+            <%= f.label :level, Message.human_attribute_name(:level), class: 'form-label-small' %>
+            <%= f.select :level, options_for_select([[t("custom.message.all_levels"), ''], ['Error', 'error'], ['Warning', 'warning'], ['Info', 'info']], params[:level]), {}, class: 'form-select form-select-sm' %>
           </div>
 
           <div class="form-group">
-            <%= f.submit 'Filter', class: 'btn btn-primary' %>
+            <%= f.submit t("general.filter"), class: 'btn btn-azure' %>
           </div>
         </div>
         <div class="d-flex gap-2 align-items-end">
@@ -36,7 +36,7 @@
             <span class="input-icon-addon">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-search"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" /><path d="M21 21l-6 -6" /></svg>
             </span>
-            <%= text_field_tag :search, params[:search], class: 'form-control', placeholder: 'Search' %>
+            <%= text_field_tag :search, params[:search], class: 'form-control', placeholder: t("general.search") %>
           </div>
         </div>
       </div>
@@ -47,10 +47,10 @@
     <table class="table table-vcenter card-table">
       <thead>
         <tr>
-          <th>Data (UTC)</th>
-          <th>App</th>
-          <th>Level</th>
-          <th>Message</th>
+          <th><%= Message.human_attribute_name(:occurred_at) %></th>
+          <th><%= App.model_name.human %></th>
+          <th><%= Message.human_attribute_name(:level) %></th>
+          <th><%= Message.human_attribute_name(:message) %></th>
           <th></th>
         </tr>
       </thead>
@@ -67,7 +67,7 @@
             </td>
             <td><%= message.message %></td>
             <td class="text-end">
-              <%= link_to 'View', message_path(message), class: 'link' %>
+              <%= link_to t("general.view"), message_path(message), class: 'link' %>
             </td>
           </tr>
         <% end %>
