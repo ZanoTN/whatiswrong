@@ -23,6 +23,8 @@ en:
       occurred_at_start: "Occurred at (start)"
       occurred_at_end: "Occurred at (end)"
       all_levels: "All Levels"
+      message:
+        message_not_found: "Message not found."
     app:
       all_apps: "All Applications"
       how_to_use_api_key: "How to use the API key?"

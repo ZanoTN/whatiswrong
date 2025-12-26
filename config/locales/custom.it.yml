@@ -23,6 +23,8 @@ it:
       occurred_at_start: "Data di occorrenza (inizio)"
       occurred_at_end: "Data di occorrenza (fine)"
       all_levels: "Tutti i Livelli"
+      message:
+        message_not_found: "Messaggio non trovato."
     app:
       all_apps: "Tutte le Applicazioni"
       how_to_use_api_key: "Come utilizzare la chiave API"

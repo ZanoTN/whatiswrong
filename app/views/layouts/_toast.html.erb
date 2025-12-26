@@ -24,9 +24,9 @@
       </div>
       <div>
         <% if key == "notice" %>
-          <h4 class="alert-heading"><%= t("general.success") %></h4>
+          <h4 class="alert-heading text-uppercase"><%= t("general.success") %></h4>
         <% else %>
-          <h4 class="alert-heading"><%= t("general.error") %></h4>
+          <h4 class="alert-heading text-uppercase"><%= t("general.error") %></h4>
         <% end %>
         <div class="alert-description">
           <%= message %>

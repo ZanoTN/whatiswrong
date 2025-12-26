@@ -58,7 +58,7 @@ class AppsController < ApplicationController
   end
 
   def set_app
-    @app = App.find(params[:id])
+    @app = App.find_by(id: params[:id])
     if @app.nil?
       redirect_to apps_path, alert: t("custom.app.message.app_not_found")
     end

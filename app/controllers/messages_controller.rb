@@ -33,9 +33,9 @@ class MessagesController < ApplicationController
   end
 
   def show
-    @message = Message.find(params[:id])
+    @message = Message.find_by(id: params[:id])
     if @message.nil?
-      redirect_to root_path, alert: "Message not found."
+      redirect_to messages_path, alert: t("custom.message.message.message_not_found")
     end
   end
 end
