@@ -8,7 +8,7 @@ class SettingsController < ApplicationController
   def update
     @settings = Setting.first
     if @settings.update!(settings_params)
-      redirect_to settings_path, notice: 'Settings updated successfully.'
+      redirect_to settings_path, notice: t("custom.setting.message.settings_updated")
     else
       render :index, status: :unprocessable_entity
     end

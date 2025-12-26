@@ -17,6 +17,8 @@ en:
       are_you_sure_logout: "Are you sure you want to log out?"
     setting:
       need_to_reload: "You need to reload the page for changes to take effect."
+      message:
+        settings_updated: "Settings updated successfully."
     message:
       occurred_at_start: "Occurred at (start)"
       occurred_at_end: "Occurred at (end)"

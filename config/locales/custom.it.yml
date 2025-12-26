@@ -17,6 +17,8 @@ it:
       are_you_sure_logout: "Sei sicuro di voler uscire?"
     setting:
       need_to_reload: "Devi ricaricare la pagina per applicare le nuove impostazioni."
+      message:
+        settings_updated: "Impostazioni aggiornate con successo."
     message:
       occurred_at_start: "Data di occorrenza (inizio)"
       occurred_at_end: "Data di occorrenza (fine)"
