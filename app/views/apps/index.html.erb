@@ -34,7 +34,7 @@
           <tr>
             <td><%= app.name %></td>
             <td class="text-end">
-              <%= link_to t("general.edit"), edit_app_path(app.id), class: 'link link-primary' %>
+              <%= link_to t("general.edit"), edit_app_path(app.id), class: "link link-primary#{' disabled' if app.system_app?}"%>
             </td>
           </tr>
         <% end %>

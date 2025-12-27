@@ -58,7 +58,7 @@ class Message < ApplicationRecord
         JSON.parse(value)
         value
       rescue JSON::ParserError
-        JSON.generate({ raw: value })
+        value
       end
     else
       JSON.generate(value)

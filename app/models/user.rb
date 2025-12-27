@@ -32,10 +32,6 @@ class User < ApplicationRecord
 
   validates :username, presence: true, uniqueness: true
 
-  after_create do |user|
-    Setting.create
-  end
-
 
   # --- Disable email for Devise ---
   def email_required?

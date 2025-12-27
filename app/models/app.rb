@@ -24,4 +24,12 @@ class App < ApplicationRecord
   def generate_api_key
     self.api_key = SecureRandom.hex(24) # 48 characters
   end
+
+  def system_app?
+    name == 'WhatIsWrong'
+  end
+
+  def self.system_app
+    find_by(name: 'WhatIsWrong')
+  end
 end

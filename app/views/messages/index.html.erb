@@ -59,7 +59,7 @@
           <tr>
             <td><%= format_datetime(message.occurred_at) %></td>
             <td>
-              <%= link_to message.app.name, edit_app_path(message.app), class: 'link' %>
+              <%= link_to message.app.name, edit_app_path(message.app), class: "link link-primary#{' disabled' if message.app.system_app?}" %>
             <td>
               <span class="<%= level_class(message) %>">
                 <%= message.level %>
