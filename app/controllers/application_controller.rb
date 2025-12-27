@@ -12,31 +12,38 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def current_setting
+    @current_setting ||= Setting.first
+  end
+
   def set_theme
-    @theme = Setting&.first&.default_theme || 'light'
+    @theme = current_setting&.default_theme || 'light'
   end
 
   def set_locale
-    I18n.locale = Setting&.first&.language || I18n.default_locale
+    I18n.locale = current_setting&.language || I18n.default_locale
   end
 
   def log_error(error)
-    Message.create(
-      app: App.system_app,
-      level: error_level(error),
-      message: error.message,
-      backtrace: error.backtrace.join("\n"),
-      occurred_at: Time.now.utc.iso8601,
-      context: JSON.generate({
-        url: request.original_url,
-        method: request.request_method,
-        params: filtered_params,
-        # cookies: request.cookies, # Avoid logging cookies for privacy/security reasons
-        headers: filtered_headers,
-        ip: request.remote_ip,
-        user_agent: request.user_agent
-      })
-    )
+    unless error.instance_variable_defined?(:@logged)
+      error.instance_variable_set(:@logged, true)
+      Message.create(
+        app: App.system_app,
+        level: error_level(error),
+        message: error.message,
+        backtrace: error.backtrace.join("\n"),
+        occurred_at: Time.now.utc.iso8601,
+        context: JSON.generate({
+          url: request.original_url,
+          method: request.request_method,
+          params: filtered_params,
+          # cookies: request.cookies, # Avoid logging cookies for privacy/security reasons
+          headers: filtered_headers,
+          ip: request.remote_ip,
+          user_agent: request.user_agent
+        })
+      )
+    end
 
     raise error
   end
