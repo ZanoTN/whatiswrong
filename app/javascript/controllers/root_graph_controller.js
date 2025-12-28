@@ -18,9 +18,9 @@ export default class extends Controller {
 
     window.ApexCharts && new ApexCharts(this.graphTarget, {
       chart: {
-        type: "bar",
+        type: "area",
         fontFamily: 'inherit',
-        height: 240,
+        height: 280,
         parentHeightOffset: 0,
         toolbar: {
           show: false,
@@ -83,10 +83,14 @@ export default class extends Controller {
       },
       labels: data.labels,
       colors: [
-        'rgb(214,57,57)',
+        'rgb(195,60,60)',
         'rgb(245,159,0)',
         'rgb(66,153,225)'
       ],
+      fill: {
+        type: 'solid',
+        opacity: 0.5
+      },
       legend: {
         labels: {
           colors: theme === "dark" ? "#d0d0d0" : "#333"
