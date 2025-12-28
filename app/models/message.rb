@@ -8,6 +8,7 @@
 #  level       :string           not null
 #  message     :string           not null
 #  occurred_at :datetime         not null
+#  readed_at   :datetime
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  app_id      :integer          not null
@@ -46,6 +47,10 @@ class Message < ApplicationRecord
   after_create do
     app.last_used_at = DateTime.now
     app.save!
+  end
+
+  def readed?
+    !self.readed_at.nil?
   end
 
   private

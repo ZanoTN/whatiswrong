@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_12_22_173139) do
+ActiveRecord::Schema[8.1].define(version: 2025_12_28_210531) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -32,6 +32,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_12_22_173139) do
     t.string "level", null: false
     t.string "message", null: false
     t.datetime "occurred_at", null: false
+    t.datetime "readed_at"
     t.datetime "updated_at", null: false
     t.index ["app_id"], name: "index_messages_on_app_id"
   end

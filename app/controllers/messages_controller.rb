@@ -37,5 +37,10 @@ class MessagesController < ApplicationController
     if @message.nil?
       redirect_to messages_path, alert: t("custom.message.message.message_not_found")
     end
+
+    if @message.readed_at.nil?
+      @message.readed_at = Time.current
+      @message.save
+    end
   end
 end

@@ -24,6 +24,14 @@ html, body {
     animation: toast-out-right 0.2s ease-in 3s forwards;
 }
 
+.dot-azure {
+    height: 0.5rem;
+    width: 0.5rem;
+    background-color: var(--tblr-azure);
+    border-radius: 50%;
+    display: inline-block;
+}
+
 @keyframes toast-out-right {
     from {
         opacity: 1;

@@ -15,3 +15,4 @@ it:
     filter: "Filtra"
     view: "Visualizza"
     work_in_progress: "L'applicazione è in fase di sviluppo, la funzionalità arriverà presto. ☺"
+    not_readed: "Non letto"
