@@ -76,6 +76,8 @@ group :development do
 
   # Fields in models
   gem "annotaterb"
+
+  gem "solargraph"
 end
 
 group :test do

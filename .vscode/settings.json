@@ -1,0 +1,11 @@
+{
+  "i18n-ally.localesPaths": ["config/locales", "app/views/messages"],
+  "ruby.lsp.enable": true,
+  "rubyLsp.enabled": true,
+  "rubyLsp.formatter": "rubocop",
+  "rubyLsp.bundleGemfile": true,
+  "rubyLsp.diagnostics": true,
+  "rubyLsp.indexing": {
+    "excludedPatterns": ["node_modules", "vendor", "tmp", "log"]
+  }
+}
