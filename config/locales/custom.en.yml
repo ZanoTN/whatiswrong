@@ -39,3 +39,9 @@ en:
         app_deleted: "Application deleted successfully."
         app_created: "Application created successfully."
         app_updated: "Application updated successfully."
+    user:
+      my_profile: "My Profile"
+      leave_blank_to_keep_current: "Leave blank to keep current"
+      update_profile: "Update Profile"
+      message:
+        profile_updated: "Profile updated successfully."

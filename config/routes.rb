@@ -15,8 +15,8 @@ Rails.application.routes.draw do
   get "docs/api", to: "page#api_docs", as: :api_docs
 
   devise_for :users, controllers: {
-    registrations: 'users/registrations',
-    sessions: 'users/sessions'
+    registrations: "users/registrations",
+    sessions: "users/sessions"
   }
 
   resources :apps do
@@ -25,9 +25,16 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :settings, only: [:index] do
+  resources :settings, only: [ :index ] do
     collection do
       patch "", to: "settings#update"
+    end
+  end
+
+  resources :users do
+    collection do
+      get "me", to: "users#me"
+      patch "me", to: "users#update_me"
     end
   end
 

@@ -7,5 +7,8 @@
   "rubyLsp.diagnostics": true,
   "rubyLsp.indexing": {
     "excludedPatterns": ["node_modules", "vendor", "tmp", "log"]
+  },
+  "files.associations": {
+    "*.html.erb": "erb"
   }
 }

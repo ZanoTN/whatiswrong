@@ -39,3 +39,9 @@ it:
         app_deleted: "Applicazione eliminata con successo."
         app_created: "Applicazione creata con successo."
         app_updated: "Applicazione aggiornata con successo."
+    user:
+      my_profile: "Il Mio Profilo"
+      leave_blank_to_keep_current: "Lascia vuoto per mantenere l'attuale"
+      update_profile: "Aggiorna Profilo"
+      message:
+        profile_updated: "Profilo aggiornato con successo."

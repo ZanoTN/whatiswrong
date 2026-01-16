@@ -1,0 +1,51 @@
+<h2 class="page-title"><%= t("custom.user.my_profile") %></h2>
+
+<div class="mt-4">
+	<div class="row g-3 row-cols-1 row-cols-lg-2">
+		<div class="col">
+			<div class="card">
+				<div class="card-status-top bg-azure"></div>
+				<div class="card-body">
+					<p><strong><%= User.human_attribute_name(:username) %>:</strong> <%= @current_user.username %></p>
+					<p><strong><%= User.human_attribute_name(:created_at) %>:</strong> <%= format_datetime(@current_user.created_at) %></p>
+					<p><strong><%= User.human_attribute_name(:updated_at) %>:</strong> <%= format_datetime(@current_user.updated_at) %></p>
+					
+				</div>
+			</div>
+		</div>
+
+		<div class="col">
+			<div class="card">
+				<%= form_with model: @current_user, url: me_users_path, method: :patch, local: true, data: { controller: "app-form" } do |form| %>
+					<div class="card-status-top bg-azure"></div>
+					<div class="card-body">
+						<%= render "layouts/form_errors", model: @current_user %>
+
+						<div class="mb-3">
+							<%= form.label :current_password, class: "form-label" %>
+							<%= form.password_field :current_password, class: "form-control", autocomplete: "current_password", placeholder: t("custom.user.leave_blank_to_keep_current") %>
+						</div>
+
+
+						<div class="mb-3">
+							<%= form.label :password, class: "form-label" %>
+							<%= form.password_field :password, class: "form-control", autocomplete: "new-password", placeholder: t("custom.user.leave_blank_to_keep_current") %>
+						</div>
+
+						<div class="mb-3">
+							<%= form.label :password_confirmation, class: "form-label" %>
+							<%= form.password_field :password_confirmation, class: "form-control", autocomplete: "new-password", placeholder: t("custom.user.leave_blank_to_keep_current") %>
+						</div>
+
+
+					</div>
+					<div class="card-footer d-flex flex-row justify-content-end align-items-center">
+						<%= form.submit t("custom.user.update_profile"), class: "btn btn-azure" %>
+					</div>
+				<% end %>
+			</div>
+
+		</div>
+	</div>
+</div>
+
