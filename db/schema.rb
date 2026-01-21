@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_12_28_210531) do
+ActiveRecord::Schema[8.1].define(version: 2026_01_17_102320) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -35,6 +35,18 @@ ActiveRecord::Schema[8.1].define(version: 2025_12_28_210531) do
     t.datetime "readed_at"
     t.datetime "updated_at", null: false
     t.index ["app_id"], name: "index_messages_on_app_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.boolean "active", default: true, null: false
+    t.jsonb "configuration", default: {}, null: false
+    t.datetime "created_at", null: false
+    t.boolean "level_error", default: true, null: false
+    t.boolean "level_info", default: true, null: false
+    t.boolean "level_warning", default: true, null: false
+    t.string "name", null: false
+    t.string "service", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "settings", force: :cascade do |t|

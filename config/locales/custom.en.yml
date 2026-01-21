@@ -45,3 +45,14 @@ en:
       update_profile: "Update Profile"
       message:
         profile_updated: "Profile updated successfully."
+    notification:
+      new_notification: "New Notification"
+      edit_notification: "Edit Notification: %{notification_title}"
+      notification_message_level: "Notification Level"
+      no_notification_service_set: "No notification service configured"
+      manage_notification_services: "Manage Notification Services"
+      message:
+        notification_not_found: "Notification not found."
+        notification_created: "Notification created successfully."
+        notification_updated: "Notification updated successfully."
+        notification_deleted: "Notification deleted successfully."

@@ -1,5 +1,5 @@
 {
-  "i18n-ally.localesPaths": ["config/locales", "app/views/messages"],
+  "i18n-ally.localesPaths": ["config/locales/**/*.yml"],
   "ruby.lsp.enable": true,
   "rubyLsp.enabled": true,
   "rubyLsp.formatter": "rubocop",

@@ -1,7 +1,7 @@
 <h2 class="page-title"><%= Setting.model_name.human(count: :many) %></h2>
 
 <%= form_with(model: @settings, url: settings_path, method: :patch, local: true) do |form| %>
-  <div class="card mt-4" data-controller="app-form">
+  <div class="card mt-4">
     <div class="card-status-top bg-azure"></div>
     <div class="card-body">
       <%= render "layouts/form_errors", model: @settings %>
@@ -36,3 +36,33 @@
     </div>
   </div>
 <% end %>
+
+<div class="card mt-4">
+  <div class="card-status-top bg-azure"></div>
+  <div class="card-header">
+    <div class="d-flex w-100 justify-content-between align-items-center">
+      <h4 class="card-title mb-0"><%= t("custom.notification.manage_notification_services") %></h4>
+      <%= link_to t("custom.notification.new_notification"), new_notification_path, data: { turbo_frame: "modal" }, class: "btn btn-azure" %>
+    </div>
+  </div>
+
+  <div class="card-header">
+    <% if @notifications.empty? %>
+      <p class="mb-0"><%= t("custom.notification.no_notification_service_set") %></p>
+    <% else %>
+      <div class="d-flex flex-column gap-3 w-100">
+        <% @notifications.each do |notification| %>
+          <div class="col-12">
+            <div class="d-flex align-items-center justify-content-between flex-row">
+              <p class="mb-0">
+                <%= notification.name %>
+                <span class="text-muted">(<%= notification.service.humanize %>)</span>
+              </p>
+              <%= link_to t("general.edit"), edit_notification_path(notification), data: { turbo_frame: "modal" }, class: "link link-azure" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

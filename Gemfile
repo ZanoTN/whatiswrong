@@ -50,8 +50,11 @@ gem "kaminari"
 gem "pg"
 
 # i18n support
-gem 'rails-i18n'
-gem 'devise-i18n'
+gem "rails-i18n"
+gem "devise-i18n"
+
+# Web call
+gem "faraday"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -85,4 +88,3 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
-

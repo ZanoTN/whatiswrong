@@ -3,6 +3,7 @@ class SettingsController < ApplicationController
 
   def index
     @settings = Setting.last
+    @notifications = Notification.all.order(active: :desc, name: :asc)
   end
 
   def update

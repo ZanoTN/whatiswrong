@@ -13,6 +13,9 @@ it:
       setting:
         one: "Impostazione"
         other: "Impostazioni"
+      notification:
+        one: "Notifica"
+        other: "Notifiche"
     attributes:
       user:
         username: "Nome utente"
@@ -38,3 +41,20 @@ it:
         languages:
           en: "Inglese"
           it: "Italiano"
+      notification:
+        name: "Nome"
+        service: "Servizio"
+        services:
+          email: "Email"
+          telegram: "Telegram"
+        configuration: "Configurazione"
+        active: "Attivo"
+        level_error: "Errore"
+        level_warning: "Avviso"
+        level_info: "Info"
+        created_at: "Creato il"
+        updated_at: "Aggiornato il"
+
+        # Telegram specific fields
+        bot_token: "Token Bot"
+        chat_id: "ID Chat"

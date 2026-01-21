@@ -45,3 +45,14 @@ it:
       update_profile: "Aggiorna Profilo"
       message:
         profile_updated: "Profilo aggiornato con successo."
+    notification:
+      new_notification: "Nuova Notifica"
+      edit_notification: "Modifica Notifica: %{notification_title}"
+      notification_message_level: "Livello Notifica"
+      no_notification_service_set: "Nessuna sistema di notifica configurato"
+      manage_notification_services: "Gestisci Sistemi di Notifica"
+      message:
+        notification_not_found: "Notifica non trovata."
+        notification_created: "Notifica creata con successo."
+        notification_updated: "Notifica aggiornata con successo."
+        notification_deleted: "Notifica eliminata con successo."

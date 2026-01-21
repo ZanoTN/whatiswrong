@@ -16,7 +16,7 @@
 
 		<div class="col">
 			<div class="card">
-				<%= form_with model: @current_user, url: me_users_path, method: :patch, local: true, data: { controller: "app-form" } do |form| %>
+				<%= form_with model: @current_user, url: me_users_path, method: :patch, local: true do |form| %>
 					<div class="card-status-top bg-azure"></div>
 					<div class="card-body">
 						<%= render "layouts/form_errors", model: @current_user %>

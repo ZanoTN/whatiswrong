@@ -24,12 +24,18 @@ module Whatiswrong
     config.time_zone = "UTC"
 
     config.i18n.default_locale = :en
-    config.i18n.available_locales = [:en, :it]
-    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
+    config.i18n.available_locales = [ :en, :it ]
+    config.i18n.load_path += Dir[Rails.root.join("config", "locales", "**", "*.{rb,yml}")]
 
     # config.eager_load_paths << Rails.root.join("extras")
 
+    #  Se logger to max 25mb files with 5 rotated files
+    config.logger = ActiveSupport::Logger.new(
+      Rails.root.join("log", "#{Rails.env}.log"), 5,
+      25 * 1024 * 1024
+    )
+
     # Version of app
-    config.x.app_version = '0.0.0'
+    config.x.app_version = "0.0.0"
   end
 end

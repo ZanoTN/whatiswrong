@@ -1,0 +1,26 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the "{}" from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+# == Schema Information
+#
+# Table name: notifications
+#
+#  id            :bigint           not null, primary key
+#  active        :boolean          default(TRUE), not null
+#  configuration :jsonb            not null
+#  level_error   :boolean          default(TRUE), not null
+#  level_info    :boolean          default(TRUE), not null
+#  level_warning :boolean          default(TRUE), not null
+#  name          :string           not null
+#  service       :string           not null
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#
+one: {}
+# column: value
+#
+two: {}
+# column: value

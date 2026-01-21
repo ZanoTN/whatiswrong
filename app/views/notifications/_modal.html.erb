@@ -1,0 +1,86 @@
+<%= turbo_frame_tag "modal" do %>
+	<div class="modal-content-custom" data-controller="modal">
+		<div class="card" data-controller="notification-service">
+			<div class="card-header">
+				<h4 class="card-title mb-0">
+					<% if @notification.new_record? %>
+						<%= t("custom.notification.new_notification") %>
+					<% else %>
+						<%= t("custom.notification.edit_notification", notification_title: @notification.name) %>
+					<% end %>
+			</div>
+			<%= form_with(model: @notification, data: { controller: "modal-form", modal_form_target: "form" }) do |form| %>
+				<div class="card-body">
+					<%= render "layouts/form_errors", model: @notification %>
+
+					<div class="row g-3">
+						<div class="col-12">
+							<%= form.label :name, class: "form-label" %>
+							<%= form.text_field :name, class: "form-control", required: true %>
+						</div>
+
+						<div class="col-12">
+							<div class="form-check">
+								<%= form.check_box :active, class: "form-check-input" %>
+								<%= form.label :active, class: "form-check-label" %>
+							</div>
+						</div>
+
+						<div class="col-12">
+							<%= form.label t("custom.notification.notification_message_level"), class: "form-label" %>
+
+							<div class="d-flex flex-row justify-content-start align-items-center gap-5">
+								<div class="form-check">
+									<%= form.check_box :level_error, class: "form-check-input" %>
+									<%= form.label :level_error, class: "form-check-label" %>									
+								</div>
+								<div class="form-check">
+									<%= form.check_box :level_warning, class: "form-check-input" %>
+									<%= form.label :level_warning, class: "form-check-label" %>
+								</div>
+								<div class="form-check">
+									<%= form.check_box :level_info, class: "form-check-input" %>
+									<%= form.label :level_info, class: "form-check-label" %>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-12">
+							<%= form.label :service, class: "form-label" %>
+							<%= form.select :service,
+															Notification.enum_options(:service),
+															{},
+															class: "form-select #{'disabled' unless @notification.new_record?}",
+															required: true,
+															disabled: !@notification.new_record?,
+															data: {
+																notification_service_target: "serviceFormInput",
+															} %>
+
+						</div>
+
+						<%# Telegram specific fields %>
+						<div class="col-12 telegram-fields">
+							<%= form.label :bot_token, class: "form-label" %>
+							<%= form.password_field :bot_token, class: "form-control", required: true, value: @notification.bot_token %>
+						</div>
+						<div class="col-12 telegram-fields">
+							<%= form.label :chat_id, class: "form-label" %>
+							<%= form.number_field :chat_id, class: "form-control", required: true %>
+						</div>
+					</div>
+				</div>
+				<div class="card-footer d-flex flex-row justify-content-between align-items-center">
+					<%= link_to t("general.cancel"), "", class: "link link-secondary", data: { action: "modal#close" } %>
+					<% if @notification.new_record? %>
+						<%= form.submit t("general.create"), class: "btn btn-azure" %>
+					<% else %>
+						<%= form.submit t("general.save"), class: "btn btn-azure" %>
+					<% end %>
+				</div>
+			<% end %>
+		</div>
+	</div>
+
+	<div class="modal-background-custom"></div>
+<% end %>

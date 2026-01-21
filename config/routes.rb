@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "notifications/edit"
+  get "notifications/update"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -39,6 +41,8 @@ Rails.application.routes.draw do
   end
 
   resources :messages, only: [ :show, :index ]
+
+  resources :notifications, only: [ :edit, :update, :new, :create, :destroy ]
 
   # External API
   put "api/v1/message", to: "external_api#add_message_v1"
