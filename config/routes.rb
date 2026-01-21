@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   root "page#index"
 
   get "docs/api", to: "page#api_docs", as: :api_docs
+  get "confirm_logout", to: "page#confirm_logout", as: :confirm_logout
 
   devise_for :users, controllers: {
     registrations: "users/registrations",
@@ -42,7 +43,11 @@ Rails.application.routes.draw do
 
   resources :messages, only: [ :show, :index ]
 
-  resources :notifications, only: [ :edit, :update, :new, :create, :destroy ]
+  resources :notifications, only: [ :edit, :update, :new, :create, :destroy ] do 
+    member do
+      get "confirm_delete"
+    end
+  end
 
   # External API
   put "api/v1/message", to: "external_api#add_message_v1"

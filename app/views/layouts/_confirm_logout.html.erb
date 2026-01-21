@@ -1,0 +1,21 @@
+<%= turbo_frame_tag "confirm_modal" do %>
+	<div class="confirm-modal-content-custom" data-controller="confirm-modal">
+		<div class="card shadow">
+			<div class="card-body">
+				<p class="mb-0"><%= t("custom.navbar.are_you_sure_logout") %></p>
+			</div>
+			<div class="card-footer text-end">
+				<div class="d-flex justify-content-between align-items-center">
+					<a href="" class="link link-secondary" data-action="confirm-modal#close"><%= t("general.cancel") %></a>
+					<%= button_to t("custom.navbar.logout"), destroy_user_session_path, 
+													method: :delete, 
+													data: { turbo_method: :delete, turbo_frame: "_top" },
+													class: "btn btn-danger ms-2",
+													form_class: "d-inline" %>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="confirm-modal-background-custom"></div>
+<% end %>

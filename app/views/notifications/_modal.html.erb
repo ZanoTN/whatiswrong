@@ -1,6 +1,6 @@
 <%= turbo_frame_tag "modal" do %>
 	<div class="modal-content-custom" data-controller="modal">
-		<div class="card" data-controller="notification-service">
+		<div class="card shadow" data-controller="notification-service">
 			<div class="card-header">
 				<h4 class="card-title mb-0">
 					<% if @notification.new_record? %>
@@ -77,12 +77,10 @@
 					<% else %>
 						<div>
 							<%= form.submit t("general.save"), class: "btn btn-azure" %>
-							<%= button_to t("general.delete"), notification_path(@notification), 
-																							method: :delete,
+							<%= link_to t("general.delete"), confirm_delete_notification_path(@notification), 
 																							data: { 
-																								turbo_method: :delete,
-																								confirm: t("custom.notification.confirm_delete_notification") 
-																							}, 
+																								turbo_frame: "confirm_modal",
+																							},
 																							class: "btn btn-danger ms-2" %>
 						</div>
 					<% end %>

@@ -39,11 +39,8 @@
             <%= link_to t("custom.navbar.feedback"), "https://github.com/ZanoTN/whatiswrong", class: "dropdown-item", target: "_blank", rel: "noopener" %>
             <%= link_to t("custom.navbar.api_documentation"), api_docs_path, class: "dropdown-item" %>
             <div class="dropdown-divider"></div>
-            <%= button_to t("custom.navbar.logout"),
-                          destroy_user_session_path,
-                          method: :delete,
-                          data: { turbo_method: :delete, turbo_confirm: t("custom.navbar.are_you_sure_logout") },
-                          class: "dropdown-item text-danger" %>
+            <%= link_to t("custom.navbar.logout"), confirm_logout_path, class: "dropdown-item text-danger", data: { turbo_frame: "confirm_modal" } %>
+            <%#= button_to t("custom.navbar.logout"), destroy_user_session_path, method: :delete, data: { turbo_method: :delete, turbo_confirm: t("custom.navbar.are_you_sure_logout") }, class: "dropdown-item text-danger" %>
           </div>
         </div>
       </div>

@@ -1,6 +1,6 @@
 class NotificationsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_notification, only: [ :edit, :update, :destroy ]
+  before_action :set_notification, only: [ :edit, :update, :destroy, :confirm_delete ]
 
   def new
     @notification = Notification.new
@@ -26,6 +26,10 @@ class NotificationsController < ApplicationController
     else
       render "_modal", status: :unprocessable_entity
     end
+  end
+
+  def confirm_delete
+    render "_confirm_delete"
   end
 
   def destroy
