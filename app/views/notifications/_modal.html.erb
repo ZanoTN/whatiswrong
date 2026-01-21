@@ -75,7 +75,16 @@
 					<% if @notification.new_record? %>
 						<%= form.submit t("general.create"), class: "btn btn-azure" %>
 					<% else %>
-						<%= form.submit t("general.save"), class: "btn btn-azure" %>
+						<div>
+							<%= form.submit t("general.save"), class: "btn btn-azure" %>
+							<%= button_to t("general.delete"), notification_path(@notification), 
+																							method: :delete,
+																							data: { 
+																								turbo_method: :delete,
+																								confirm: t("custom.notification.confirm_delete_notification") 
+																							}, 
+																							class: "btn btn-danger ms-2" %>
+						</div>
 					<% end %>
 				</div>
 			<% end %>
