@@ -4,6 +4,18 @@ module ApplicationHelper
   end
 
   def format_datetime(datetime)
+    ApplicationHelper.format_datetime(datetime)
+  end
+
+  def format_date(date)
+    ApplicationHelper.format_date(date)
+  end
+
+  def format_json(string)
+    ApplicationHelper.format_json(string)
+  end
+
+  def self.format_datetime(datetime)
     if datetime.nil?
       return ""
     end
@@ -11,7 +23,7 @@ module ApplicationHelper
     datetime.strftime("%d-%m-%Y %H:%M:%S (%Z)")
   end
 
-  def format_date(date)
+  def self.format_date(date)
     if date.nil?
       return ""
     end
@@ -19,10 +31,10 @@ module ApplicationHelper
     date.strftime("%d %m %Y")
   end
 
-  def format_json(string)
+  def self.format_json(string)
     begin
       json_object = JSON.parse(string)
-      JSON.pretty_generate(json_object, indent: '  ')
+      JSON.pretty_generate(json_object, indent: "  ")
     rescue JSON::ParserError
       "Invalid JSON"
     end

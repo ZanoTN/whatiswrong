@@ -58,3 +58,9 @@ en:
         # Telegram specific fields
         bot_token: "Token Bot"
         chat_id: "ID Chat"
+
+        # Discord specific fields
+        webhook_url: "Webhook URL"
+    errors:
+      messages:
+        no_levels_selected: "At least one notification level must be selected"

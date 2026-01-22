@@ -28,9 +28,9 @@ class Message < ApplicationRecord
   validates :level, presence: true
 
   enum :level, {
-    info: 'info',
-    warning: 'warning',
-    error: 'error',
+    info: "info",
+    warning: "warning",
+    error: "error"
   }
 
   before_validation do
@@ -45,15 +45,35 @@ class Message < ApplicationRecord
   end
 
   after_create do
-    app.last_used_at = DateTime.now
-    app.save!
+    update_last_used_at_app
+    send_notifications
   end
 
   def readed?
     !self.readed_at.nil?
   end
 
+  def send_notifications
+    Notification.all.each do |notification|
+      begin
+        notification.send_message(self)
+      rescue => e
+        Rails.logger.error("Failed to send notification ##{notification.id} for message ##{id}: #{e.message}")
+      end
+    end
+  end
+
   private
+
+  def update_last_used_at_app
+    #  Prevent updating last_used_at too often
+    if !app.last_used_at.nil? && app.last_used_at > 5.minutes.ago
+      return
+    end
+
+    app.last_used_at = DateTime.now
+    app.save(validate: false)
+  end
 
   def self.parse_json_to_string(value)
     return nil if value.nil?

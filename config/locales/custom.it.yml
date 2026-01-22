@@ -52,6 +52,10 @@ it:
       no_notification_service_set: "Nessuna sistema di notifica configurato"
       manage_notification_services: "Gestisci Sistemi di Notifica"
       confirm_delete_notification: "Sei sicuro di voler eliminare questa notifica? Questa azione non può essere annullata."
+      telegram:
+        how_create_bot: "Come creare un bot Telegram?"
+      discord:
+        how_create_webhook: "Come creare un webhook Discord?"
       message:
         notification_not_found: "Notifica non trovata."
         notification_created: "Notifica creata con successo."

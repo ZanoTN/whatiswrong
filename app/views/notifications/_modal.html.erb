@@ -62,11 +62,27 @@
 						<%# Telegram specific fields %>
 						<div class="col-12 telegram-fields">
 							<%= form.label :bot_token, class: "form-label" %>
-							<%= form.password_field :bot_token, class: "form-control", required: true, value: @notification.bot_token %>
+							<%= form.password_field :bot_token, class: "form-control", value: @notification.bot_token %>
 						</div>
 						<div class="col-12 telegram-fields">
 							<%= form.label :chat_id, class: "form-label" %>
-							<%= form.number_field :chat_id, class: "form-control", required: true %>
+							<%= form.number_field :chat_id, class: "form-control" %>
+						</div>
+						<div class="col-12 telegram-fields">
+							<a class="link link-secondary" href="https://gist.github.com/nafiesl/4ad622f344cd1dc3bb1ecbe468ff9f8a" target="_blank" rel="noopener noreferrer">
+								<%= t("custom.notification.telegram.how_create_bot") %>
+							</a>
+						</div>
+
+						<%# Discord specific fields %>
+						<div class="col-12 discord-fields">
+							<%= form.label :webhook_url, class: "form-label" %>
+							<%= form.password_field :webhook_url, class: "form-control", value: @notification.webhook_url %>
+						</div>
+						<div class="col-12 discord-fields">
+							<a class="link link-secondary" href="https://support.discord.com/hc/en-us/articles/228383668-Intro-to-Webhooks" target="_blank" rel="noopener noreferrer">
+								<%= t("custom.notification.discord.how_create_webhook") %>
+							</a>
 						</div>
 					</div>
 				</div>

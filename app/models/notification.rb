@@ -16,16 +16,19 @@
 class Notification < ApplicationRecord
     store_accessor :configuration,
       :chat_id,
-      :bot_token
+      :bot_token,
+      :webhook_url
 
   validates :service, presence: true
   validates :name, presence: true, uniqueness: true, length: { minimum: 3, maximum: 50 }
+  validate :validate_configuration
+  validate :levels_selected
 
   enum :service, {
-    telegram: "telegram"
+    telegram: "telegram",
+    discord: "discord"
   }
 
-  validate :validate_configuration
 
   def send_message(message)
     if !active
@@ -51,13 +54,21 @@ class Notification < ApplicationRecord
     # Send message via the appropriate service
     case service
     when "telegram"
-      NotificationsService::Telegram.new.send_message(self, message)
+      NotificationsService::Telegram.send_message(self, message)
+    when "discord"
+      NotificationsService::Discord.send_message(self, message)
     else
       raise "Unsupported notification service: #{service}"
     end
   end
 
   private
+
+  def levels_selected
+    unless level_info || level_warning || level_error
+      errors.add(:base, :no_levels_selected)
+    end
+  end
 
   def validate_configuration
     send("validate_#{service}_configuration")
@@ -67,5 +78,9 @@ class Notification < ApplicationRecord
 
   def validate_telegram_configuration
     validates_presence_of :chat_id, :bot_token
+  end
+
+  def validate_discord_configuration
+    validates_presence_of :webhook_url
   end
 end

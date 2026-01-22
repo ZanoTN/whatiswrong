@@ -52,6 +52,10 @@ en:
       no_notification_service_set: "No notification service configured"
       manage_notification_services: "Manage Notification Services"
       confirm_delete_notification: "Are you sure you want to delete this notification? This action cannot be undone."
+      telegram:
+        how_create_bot: "How to create a Telegram bot?"
+      discord:
+        how_create_webhook: "How to create a Discord webhook?"
       message:
         notification_not_found: "Notification not found."
         notification_created: "Notification created successfully."
