@@ -20,6 +20,6 @@ echo "Precompiling assets..." | tee -a $LOG_FILE
 bundle exec rails assets:precompile | tee -a $LOG_FILE
 
 echo "Restarting Rails service..." | tee -a $LOG_FILE
-sudo systemctl restart eventspi
+sudo systemctl restart whatiswrong-rails.service | tee -a $LOG_FILE
 
 echo "===== Deploy finished: $(date) =====" | tee -a $LOG_FILE
