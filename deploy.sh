@@ -11,7 +11,7 @@ echo "Pulling latest code..." | tee -a $LOG_FILE
 git pull origin main | tee -a $LOG_FILE
 
 echo "Installing gems..." | tee -a $LOG_FILE
-bundle install --deployment --without development test | tee -a $LOG_FILE
+bundle install --deployment | tee -a $LOG_FILE
 
 echo "Running migrations..." | tee -a $LOG_FILE
 (
