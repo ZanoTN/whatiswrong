@@ -15,7 +15,6 @@ bundle install --deployment | tee -a $LOG_FILE
 
 echo "Running migrations..." | tee -a $LOG_FILE
 (
-  # subshell: carico solo per Rails
   set -a
   source $APP_DIR/.env
   set +a
