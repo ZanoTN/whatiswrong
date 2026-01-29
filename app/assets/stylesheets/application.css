@@ -90,7 +90,7 @@ body {
 }
 
 .confirm-modal-content-custom > .card {
-  max-width: 560px !important;
+  max-width: 500px !important;
   width: 95vw;
   max-height: 95vh;
   min-width: 200px !important;
