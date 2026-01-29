@@ -13,18 +13,20 @@ class AppsController < ApplicationController
   end
 
   def edit
+    render "_modal"
   end
 
   def update
     if @app.update(app_params)
       redirect_to apps_path, notice: t("custom.app.message.app_updated")
     else
-      render :edit, status: :unprocessable_entity
+      render "_modal", status: :unprocessable_entity
     end
   end
 
   def new
     @app = App.new
+    render "_modal"
   end
 
   def create
@@ -32,7 +34,7 @@ class AppsController < ApplicationController
     if @app.save
       redirect_to edit_app_path(@app), notice: t("custom.app.message.app_created")
     else
-      render :new, status: :unprocessable_entity
+      render "_modal", status: :unprocessable_entity
     end
   end
 

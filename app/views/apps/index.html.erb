@@ -16,7 +16,7 @@
             <%= text_field_tag :search, params[:search], class: 'form-control', placeholder: t("general.search") %>
           </div>
         <% end %>
-        <%= link_to t("general.new"), new_app_path, class: 'btn btn-azure' %>
+        <%= link_to t("general.new"), new_app_path, class: 'btn btn-azure', data: { turbo_frame: "modal" } %>
       </div>
     </div>
   </div>
@@ -34,7 +34,7 @@
           <tr>
             <td><%= app.name %></td>
             <td class="text-end">
-              <%= link_to t("general.edit"), edit_app_path(app.id), class: "link link-primary#{' disabled' if app.system_app?}"%>
+              <%= link_to t("general.edit"), edit_app_path(app.id), class: "link link-primary#{' disabled' if app.system_app?}", data: { turbo_frame: "modal" } %>
             </td>
           </tr>
         <% end %>
