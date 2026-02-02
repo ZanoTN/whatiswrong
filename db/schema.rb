@@ -10,9 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_01_17_102320) do
+ActiveRecord::Schema[8.1].define(version: 2026_01_29_184031) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "app_notifications", force: :cascade do |t|
+    t.bigint "app_id", null: false
+    t.datetime "created_at", null: false
+    t.boolean "level_error", default: false
+    t.boolean "level_info", default: false
+    t.boolean "level_warning", default: false
+    t.bigint "notification_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["app_id", "notification_id"], name: "index_app_notifications_on_app_id_and_notification_id", unique: true
+    t.index ["app_id"], name: "index_app_notifications_on_app_id"
+    t.index ["notification_id"], name: "index_app_notifications_on_notification_id"
+  end
 
   create_table "apps", force: :cascade do |t|
     t.string "api_key", null: false
@@ -41,9 +54,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_17_102320) do
     t.boolean "active", default: true, null: false
     t.jsonb "configuration", default: {}, null: false
     t.datetime "created_at", null: false
-    t.boolean "level_error", default: true, null: false
-    t.boolean "level_info", default: true, null: false
-    t.boolean "level_warning", default: true, null: false
     t.string "name", null: false
     t.string "service", null: false
     t.datetime "updated_at", null: false
@@ -75,5 +85,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_17_102320) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "app_notifications", "apps"
+  add_foreign_key "app_notifications", "notifications"
   add_foreign_key "messages", "apps"
 end

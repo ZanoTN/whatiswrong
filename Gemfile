@@ -80,6 +80,10 @@ group :development do
   # Fields in models
   gem "annotaterb"
 
+  gem "rubocop"
+  gem "rubocop-rails"
+  gem "rubocop-rspec"
+  gem "rubocop-performance"
   gem "solargraph"
 end
 

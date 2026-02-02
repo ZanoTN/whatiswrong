@@ -16,20 +16,30 @@
 #
 class App < ApplicationRecord
   has_many :messages, dependent: :destroy
+  has_many :app_notifications, dependent: :destroy
 
   validates :name, presence: true, uniqueness: true, length: { minimum: 3, maximum: 50 }
 
+  accepts_nested_attributes_for :app_notifications, allow_destroy: true
+
   before_create :generate_api_key
+
+  after_create do
+    # Create default notifications for the app
+    Notification.all.each do |notification|
+      AppNotification.create(app: self, notification: notification)
+    end
+  end
 
   def generate_api_key
     self.api_key = SecureRandom.hex(24) # 48 characters
   end
 
   def system_app?
-    name == 'WhatIsWrong'
+    name == "WhatIsWrong"
   end
 
   def self.system_app
-    find_by(name: 'WhatIsWrong')
+    find_by(name: "WhatIsWrong")
   end
 end

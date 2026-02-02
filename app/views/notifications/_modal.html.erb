@@ -27,25 +27,6 @@
 						</div>
 
 						<div class="col-12">
-							<%= form.label t("custom.notification.notification_message_level"), class: "form-label" %>
-
-							<div class="d-flex flex-row justify-content-start align-items-center gap-5">
-								<div class="form-check">
-									<%= form.check_box :level_error, class: "form-check-input" %>
-									<%= form.label :level_error, class: "form-check-label" %>									
-								</div>
-								<div class="form-check">
-									<%= form.check_box :level_warning, class: "form-check-input" %>
-									<%= form.label :level_warning, class: "form-check-label" %>
-								</div>
-								<div class="form-check">
-									<%= form.check_box :level_info, class: "form-check-input" %>
-									<%= form.label :level_info, class: "form-check-label" %>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-12">
 							<%= form.label :service, class: "form-label" %>
 							<%= form.select :service,
 															Notification.enum_options(:service),

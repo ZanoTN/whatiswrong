@@ -10,5 +10,6 @@
   },
   "files.associations": {
     "*.html.erb": "erb"
-  }
+  },
+  "ruby.interpreter.commandPath": "/usr/local/bin/ruby"
 }

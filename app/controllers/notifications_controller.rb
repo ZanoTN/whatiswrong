@@ -40,7 +40,7 @@ class NotificationsController < ApplicationController
   private
 
   def notification_params
-    params.require(:notification).permit(:name, :service, :active, :level_info, :level_warning, :level_error, :chat_id, :bot_token, :webhook_url)
+    params.require(:notification).permit(:name, :service, :active, :chat_id, :bot_token, :webhook_url)
   end
 
   def set_notification

@@ -49,9 +49,6 @@ en:
           telegram: "Telegram"
         configuration: "Configuration"
         active: "Active"
-        level_error: "Error"
-        level_warning: "Warning"
-        level_info: "Info"
         created_at: "Created At"
         updated_at: "Updated At"
 
@@ -61,6 +58,12 @@ en:
 
         # Discord specific fields
         webhook_url: "Webhook URL"
+      app_notification:
+        level_info: "Info"
+        level_warning: "Warning"
+        level_error: "Error"
+        created_at: "Created At"
+        updated_at: "Updated At"
     errors:
       messages:
         no_levels_selected: "At least one notification level must be selected"

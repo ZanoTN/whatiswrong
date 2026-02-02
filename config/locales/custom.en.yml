@@ -48,7 +48,6 @@ en:
     notification:
       new_notification: "New Notification"
       edit_notification: "Edit Notification: %{notification_title}"
-      notification_message_level: "Notification Level"
       no_notification_service_set: "No notification service configured"
       manage_notification_services: "Manage Notification Services"
       confirm_delete_notification: "Are you sure you want to delete this notification? This action cannot be undone."

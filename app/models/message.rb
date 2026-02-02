@@ -54,11 +54,12 @@ class Message < ApplicationRecord
   end
 
   def send_notifications
-    Notification.all.each do |notification|
+    app_notifications = AppNotification.where(app_id: app.id)
+    app_notifications.each do |app_notification|
       begin
-        notification.send_message(self)
+        app_notification.send_message(self)
       rescue => e
-        Rails.logger.error("Failed to send notification ##{notification.id} for message ##{id}: #{e.message}")
+        Rails.logger.error("Failed to send notification ##{app_notification.id} for message ##{id}: #{e.message}")
       end
     end
   end

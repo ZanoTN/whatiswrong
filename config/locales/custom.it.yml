@@ -48,7 +48,6 @@ it:
     notification:
       new_notification: "Nuova Notifica"
       edit_notification: "Modifica Notifica: %{notification_title}"
-      notification_message_level: "Livello Notifica"
       no_notification_service_set: "Nessuna sistema di notifica configurato"
       manage_notification_services: "Gestisci Sistemi di Notifica"
       confirm_delete_notification: "Sei sicuro di voler eliminare questa notifica? Questa azione non può essere annullata."

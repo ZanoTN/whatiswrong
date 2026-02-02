@@ -40,8 +40,47 @@
 							<div class="form-hint">
 								<%= link_to t("custom.app.how_to_use_api_key"), api_docs_path(key: @app.api_key), target: "_blank", class: "link link-secondary" %>
 							</div>
-
 						</div>
+
+						<div class="col-12">
+						<%= form.label t("custom.notification.manage_notification_services"), class: "form-label" %>
+
+						<table class="table">
+							<thead>
+								<tr>
+									<th class="w-100"></th>
+									<th><%= t("activerecord.attributes.app_notification.level_info") %></th>
+									<th><%= t("activerecord.attributes.app_notification.level_warning") %></th>
+									<th><%= t("activerecord.attributes.app_notification.level_error") %></th>
+								</tr>
+							</thead>
+
+							<tbody>
+								<%= form.fields_for :app_notifications do |notification_form| %>
+									<tr>
+										<td class="text-start">
+											<%= notification_form.object.notification.name %>
+										</td>
+
+										<%= notification_form.hidden_field :id %>
+
+										<td class="text-center">
+											<%= notification_form.check_box :level_info, class: "form-check-input" %>
+										</td>
+
+										<td class="text-center">
+											<%= notification_form.check_box :level_warning, class: "form-check-input" %>
+										</td>
+
+										<td class="text-center">
+											<%= notification_form.check_box :level_error, class: "form-check-input" %>
+										</td>
+									</tr>
+								<% end %>
+							</tbody>
+						</table>
+					</div>
+
 
 						<% if @app.persisted? %>
 							<div class="col-12">

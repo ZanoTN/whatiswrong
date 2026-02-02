@@ -56,7 +56,7 @@ class AppsController < ApplicationController
   private
 
   def app_params
-    params.require(:app).permit(:name)
+    params.require(:app).permit(:name, app_notifications_attributes: [ :id, :level_info, :level_warning, :level_error ])
   end
 
   def set_app
