@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_theme
-    @theme = current_setting&.default_theme || "light"
+    @theme = current_setting&.default_theme || "dark"
   end
 
   def set_locale
