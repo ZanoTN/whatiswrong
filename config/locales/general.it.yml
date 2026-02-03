@@ -1,6 +1,6 @@
 it:
   general:
-    delete: "Rimouovi"
+    delete: "Rimuovi"
     edit: "Modifica"
     save: "Salva"
     cancel: "Annulla"
@@ -16,3 +16,4 @@ it:
     view: "Visualizza"
     work_in_progress: "L'applicazione è in fase di sviluppo, la funzionalità arriverà presto. ☺"
     not_readed: "Non letto"
+    regenerate: "Rigenera"

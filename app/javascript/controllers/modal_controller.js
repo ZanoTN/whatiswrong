@@ -25,6 +25,10 @@ export default class extends Controller {
     }
   }
 
+  confirm() {
+    this.close();
+  }
+
   canBeClosed() {
     if (this.getModalIdValue() === "confirm-modal") {
       return false;

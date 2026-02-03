@@ -1,0 +1,21 @@
+<%= turbo_frame_tag "confirm_modal" do %>
+	<div class="confirm-modal-content-custom" data-controller="modal" data-modal-type-value="confirm_modal">
+		<div class="card shadow">
+			<div class="card-body">
+				<p class="mb-0"><%= t("custom.app.are_you_sure_regenerate_api_key") %></p>
+			</div>
+			<div class="card-footer text-end">
+				<div class="d-flex justify-content-between align-items-center">
+					<a href="" class="link link-secondary" data-action="confirm-modal#close"><%= t("general.cancel") %></a>
+					<%= button_to t("general.regenerate"), regenerate_api_key_app_path(@app.id),
+													method: :put, 
+													data: { turbo_method: :put, turbo_frame: "modal", turbo_action: "replace", action: "confirm-modal#confirm" },
+													class: "btn btn-danger ms-2",
+													form_class: "d-inline" %>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="confirm-modal-background-custom"></div>
+<% end %>

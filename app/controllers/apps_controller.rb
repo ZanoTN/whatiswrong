@@ -1,6 +1,6 @@
 class AppsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_app, only: [ :edit, :update, :destroy, :regenerate_api_key ]
+  before_action :set_app, only: [ :edit, :update, :destroy, :regenerate_api_key, :confirm_regenerate_api_key, :confirm_destroy ]
 
   def index
     @apps = App.order(:name)
@@ -38,9 +38,15 @@ class AppsController < ApplicationController
     end
   end
 
+  def confirm_destroy
+  end
+
   def destroy
     @app.destroy
     redirect_to apps_path, notice: t("custom.app.message.app_deleted")
+  end
+
+  def confirm_regenerate_api_key
   end
 
   def regenerate_api_key

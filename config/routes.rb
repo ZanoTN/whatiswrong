@@ -25,6 +25,8 @@ Rails.application.routes.draw do
   resources :apps do
     member do
       put "regenerate_api_key"
+      get "confirm_regenerate_api_key"
+      get "confirm_destroy"
     end
   end
 
@@ -43,7 +45,7 @@ Rails.application.routes.draw do
 
   resources :messages, only: [ :show, :index ]
 
-  resources :notifications, only: [ :edit, :update, :new, :create, :destroy ] do 
+  resources :notifications, only: [ :edit, :update, :new, :create, :destroy ] do
     member do
       get "confirm_delete"
     end
