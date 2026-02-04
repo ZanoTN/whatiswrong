@@ -78,4 +78,6 @@ Rails.application.configure do
 
   # Set default host for URL generation in development environment.
   config.default_host = "localhost:3000"
+
+  config.active_job.queue_adapter = :async
 end

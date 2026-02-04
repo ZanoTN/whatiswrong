@@ -1,7 +1,6 @@
 module AfterAppStart
   def self.run
     create_settings_record
-
     create_default_app_whatiswrong
   end
 

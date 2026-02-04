@@ -46,22 +46,11 @@ class Message < ApplicationRecord
 
   after_create do
     update_last_used_at_app
-    send_notifications
+    SendNotificationsJob.perform_later(id)
   end
 
   def readed?
     !self.readed_at.nil?
-  end
-
-  def send_notifications
-    app_notifications = AppNotification.where(app_id: app.id)
-    app_notifications.each do |app_notification|
-      begin
-        app_notification.send_message(self)
-      rescue => e
-        Rails.logger.error("Failed to send notification ##{app_notification.id} for message ##{id}: #{e.message}")
-      end
-    end
   end
 
   private

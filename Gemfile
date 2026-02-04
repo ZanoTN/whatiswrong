@@ -56,6 +56,10 @@ gem "devise-i18n"
 # Web call
 gem "faraday"
 
+#  Delayed job backend
+gem "delayed_job_active_record"
+gem "delayed_job"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]
@@ -71,6 +75,8 @@ group :development, :test do
 
   # Random data for testing and seeding
   gem "faker"
+
+  gem "daemons"
 end
 
 group :development do

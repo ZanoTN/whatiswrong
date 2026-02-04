@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_02_03_170847) do
+ActiveRecord::Schema[8.1].define(version: 2026_02_04_142957) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -35,6 +35,21 @@ ActiveRecord::Schema[8.1].define(version: 2026_02_03_170847) do
     t.datetime "updated_at", null: false
     t.index ["api_key"], name: "index_apps_on_api_key", unique: true
     t.index ["name"], name: "index_apps_on_name", unique: true
+  end
+
+  create_table "delayed_jobs", force: :cascade do |t|
+    t.integer "attempts", default: 0, null: false
+    t.datetime "created_at"
+    t.datetime "failed_at"
+    t.text "handler", null: false
+    t.text "last_error"
+    t.datetime "locked_at"
+    t.string "locked_by"
+    t.integer "priority", default: 0, null: false
+    t.string "queue"
+    t.datetime "run_at"
+    t.datetime "updated_at"
+    t.index ["priority", "run_at"], name: "delayed_jobs_priority"
   end
 
   create_table "messages", force: :cascade do |t|
