@@ -53,7 +53,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_02_04_142957) do
   end
 
   create_table "messages", force: :cascade do |t|
-    t.integer "app_id", null: false
+    t.bigint "app_id", null: false
     t.text "backtrace"
     t.text "context"
     t.datetime "created_at", null: false
