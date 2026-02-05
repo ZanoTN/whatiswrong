@@ -16,13 +16,13 @@ def generate_demo_data
   puts "Generating demo data..."
 
   # Create demo user
-  User.create!( username: "demo", password: "password" )
+  User.create!(username: "demo_user", password: "demo_password")
 
   app_names = generate_unique_app_names(12)
 
   # Generate 7 demo applications with messages
   app_names.each do |name|
-    app = App.create!( name: name ) #
+    app = App.create!(name: name) #
 
     # Generate X messages for each app
     random_message_count = rand(80..120)
@@ -48,7 +48,7 @@ def generate_unique_app_names(number_of_names)
   app_names = Set.new
 
   while app_names.size < number_of_names
-    app_names.add(Faker::App.name) #Faker::Movies::LordOfTheRings.location
+    app_names.add(Faker::App.name) # Faker::Movies::LordOfTheRings.location
   end
 
   app_names.to_a
@@ -59,7 +59,7 @@ def random_context
     "user_id": rand(1..1000),
     "session_id": Faker::Alphanumeric.alphanumeric(number: 10),
     "token": Faker::Alphanumeric.alphanumeric(number: 30),
-    "feature_flag": ["new_ui", "beta_feature", "dark_mode"].sample
+    "feature_flag": [ "new_ui", "beta_feature", "dark_mode" ].sample
   })
 end
 

@@ -1,9 +1,14 @@
-# WhatIsWrong
+# 🛂 WhatIsWrong
 
 WhatIsWrong is a web application designed to help users identify and troubleshoot issues with their applications and systems.
 It provides a user-friendly interface for tracking problems.
 
-##  Installation (Docker only)
+You can find a live demo of the application [here](https://whatiswrong-demo.zanotn.space/), with the following credentials:
+
+- **Username**: `demo_user`
+- **Password**: `demo_password`
+
+## 🐳 Installation (Docker only)
 
 The application requires Docker to be installed on your machine.
 Why Docker? Because it simplifies the setup process and ensures that all dependencies are correctly configured.
@@ -41,3 +46,7 @@ docker-compose -f <your-chosen-docker-compose-file.yml> up -d
 ```
 
 3. The application will be accessible at `http://localhost:8085`.
+
+## 🤝 Contributing
+
+Contributions are welcome! If you have any ideas for improvements or want to report a bug, please open an issue or submit a pull request.
