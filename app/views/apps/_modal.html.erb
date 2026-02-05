@@ -19,68 +19,72 @@
 							<%= form.text_field :name, class: "form-control", required: true %>
 						</div>
 
-						<div class="col-12">
-							<%= form.label :api_key, class: "form-label" %>
-							<div class="input-group input-group-flat">
-								<%= form.text_field :api_key, class: "form-control", required: true, disabled: true, data: { app_form_target: "apiKey" } %>
-								<span class="input-group-text">
-									<% if @app.persisted? %>
-										<%= link_to confirm_regenerate_api_key_app_path(@app),
-																	data: { turbo_frame: "confirm_modal" },
-																	class: "link-secondary" do %>
-											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-refresh"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4" /><path d="M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4" /></svg>
-										
+						<% if @app.persisted? %>
+
+							<div class="col-12">
+								<%= form.label :api_key, class: "form-label" %>
+								<div class="input-group input-group-flat">
+									<%= form.text_field :api_key, class: "form-control", required: true, disabled: true, data: { app_form_target: "apiKey" } %>
+									<span class="input-group-text">
+										<% if @app.persisted? %>
+											<%= link_to confirm_regenerate_api_key_app_path(@app),
+																		data: { turbo_frame: "confirm_modal" },
+																		class: "link-secondary" do %>
+												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-refresh"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4" /><path d="M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4" /></svg>
+											
+											<% end %>
 										<% end %>
-									<% end %>
-									<div class="link-secondary ms-2 cursor-pointer" title="Click to copy" data-app-form-target="copyButton">
-										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-copy"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><rect x="8" y="8" width="12" height="12" rx="2" /><path d="M16 8v-2a2 2 0 0 0 -2 -2h-10a2 2 0 0 0 -2 2v10a2 2 0 0 0 2 2h2" /></svg>
-									</div>
-								</span>
+										<div class="link-secondary ms-2 cursor-pointer" title="Click to copy" data-app-form-target="copyButton">
+											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-copy"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><rect x="8" y="8" width="12" height="12" rx="2" /><path d="M16 8v-2a2 2 0 0 0 -2 -2h-10a2 2 0 0 0 -2 2v10a2 2 0 0 0 2 2h2" /></svg>
+										</div>
+									</span>
+								</div>
+								<div class="form-hint">
+									<%= link_to t("custom.app.how_to_use_api_key"), api_docs_path(key: @app.api_key), target: "_blank", class: "link link-secondary" %>
+								</div>
 							</div>
-							<div class="form-hint">
-								<%= link_to t("custom.app.how_to_use_api_key"), api_docs_path(key: @app.api_key), target: "_blank", class: "link link-secondary" %>
+						<% end %>
+						
+						<% if @app.persisted? %>
+							<div class="col-12">
+								<%= form.label t("custom.notification.manage_notification_services"), class: "form-label" %>
+
+								<table class="table">
+									<thead>
+										<tr>
+											<th class="w-100"></th>
+											<th><%= t("activerecord.attributes.app_notification.level_info") %></th>
+											<th><%= t("activerecord.attributes.app_notification.level_warning") %></th>
+											<th><%= t("activerecord.attributes.app_notification.level_error") %></th>
+										</tr>
+									</thead>
+
+									<tbody>
+										<%= form.fields_for :app_notifications do |notification_form| %>
+											<tr>
+												<td class="text-start">
+													<%= notification_form.object.notification.name %>
+												</td>
+
+												<%= notification_form.hidden_field :id %>
+
+												<td class="text-center">
+													<%= notification_form.check_box :level_info, class: "form-check-input" %>
+												</td>
+
+												<td class="text-center">
+													<%= notification_form.check_box :level_warning, class: "form-check-input" %>
+												</td>
+
+												<td class="text-center">
+													<%= notification_form.check_box :level_error, class: "form-check-input" %>
+												</td>
+											</tr>
+										<% end %>
+									</tbody>
+								</table>
 							</div>
-						</div>
-
-						<div class="col-12">
-						<%= form.label t("custom.notification.manage_notification_services"), class: "form-label" %>
-
-						<table class="table">
-							<thead>
-								<tr>
-									<th class="w-100"></th>
-									<th><%= t("activerecord.attributes.app_notification.level_info") %></th>
-									<th><%= t("activerecord.attributes.app_notification.level_warning") %></th>
-									<th><%= t("activerecord.attributes.app_notification.level_error") %></th>
-								</tr>
-							</thead>
-
-							<tbody>
-								<%= form.fields_for :app_notifications do |notification_form| %>
-									<tr>
-										<td class="text-start">
-											<%= notification_form.object.notification.name %>
-										</td>
-
-										<%= notification_form.hidden_field :id %>
-
-										<td class="text-center">
-											<%= notification_form.check_box :level_info, class: "form-check-input" %>
-										</td>
-
-										<td class="text-center">
-											<%= notification_form.check_box :level_warning, class: "form-check-input" %>
-										</td>
-
-										<td class="text-center">
-											<%= notification_form.check_box :level_error, class: "form-check-input" %>
-										</td>
-									</tr>
-								<% end %>
-							</tbody>
-						</table>
-					</div>
-
+						<% end %>
 
 						<% if @app.persisted? %>
 							<div class="col-12">

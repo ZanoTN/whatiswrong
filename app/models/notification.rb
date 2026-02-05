@@ -27,6 +27,12 @@ class Notification < ApplicationRecord
     discord: "discord"
   }
 
+  after_create do
+    App.find_each do |app|
+      AppNotification.create(app: app, notification: self)
+    end
+  end
+
   private
 
   def validate_configuration
