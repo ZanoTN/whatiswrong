@@ -1,0 +1,19 @@
+services:
+  web:
+    image: zanotn/whatiswrong:latest
+    ports:
+      - "8085:3000"
+    environment:
+      DB_ADAPTER: postgresql
+      DB_HOST: 192.168.1.1
+      DB_PORT: 5432
+      DB_NAME: whatiswrong_production
+      DB_USERNAME: postgres
+      DB_PASSWORD: postgres
+    volumes:
+      - app_tmp:/rails/tmp
+    restart: unless-stopped
+    network_mode: "host"
+
+volumes:
+  app_tmp:

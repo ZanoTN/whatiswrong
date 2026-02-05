@@ -1,24 +1,43 @@
-# README
+# WhatIsWrong
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+WhatIsWrong is a web application designed to help users identify and troubleshoot issues with their applications and systems.
+It provides a user-friendly interface for tracking problems.
 
-Things you may want to cover:
+##  Installation (Docker only)
 
-* Ruby version
+The application requires Docker to be installed on your machine.
+Why Docker? Because it simplifies the setup process and ensures that all dependencies are correctly configured.
 
-* System dependencies
+How to install Docker:
 
-* Configuration
+- For Windows and Mac: Download and install Docker Desktop from [here](https://www.docker.com/products/docker-desktop).
+- For Linux: Follow the instructions for your specific distribution from [here](https://docs.docker.com/engine/install/).
 
-* Database creation
+### Choosing a the correct docker compose configuration
 
-* Database initialization
+- **Postgres**:
+  - App + DB + Auto update: [docker-compose.postgres.app-db-auto-update.yml](https://github.com/ZanoTN/whatiswrong/blob/main/docker_compose_configs/docker-compose.postgres.app-db-auto-update.yml)
+  - App + DB: [docker-compose.postgres.app-db.yml](https://github.com/ZanoTN/whatiswrong/blob/main/docker_compose_configs/docker-compose.postgres.app-db.yml)
+  - App + Auto update: [docker-compose.postgres.app-auto-update.yml](https://github.com/ZanoTN/whatiswrong/blob/main/docker_compose_configs/docker-compose.postgres.app-auto-update.yml)
+  - App only: [docker-compose.postgres.app.yml](https://github.com/ZanoTN/whatiswrong/blob/main/docker_compose_configs/docker-compose.postgres.app.yml)
 
-* How to run the test suite
+- **SQLite** (Not supported for now):
+  - App + DB + Auto update: [docker-compose.postgres.app-db-auto-update.yml]()
+  - App + DB: [docker-compose.postgres.app-db.yml]()
 
-* Services (job queues, cache servers, search engines, etc.)
+- **MySQL** (Not supported for now):
+  - App + DB + Auto update: [docker-compose.mysql.app-db-auto-update.yml]()
+  - App + DB: [docker-compose.mysql.app-db.yml]()
+  - App + Auto update: [docker-compose.mysql.app-auto-update.yml]()
+  - App only: [docker-compose.mysql.app.yml]()
 
-* Deployment instructions
+### Running the application
 
-* ...
+1. Open a terminal and navigate to the directory where the `docker-compose` file is located.
+2. Run the following command to start the application:
+
+```bash
+docker-compose -f <your-chosen-docker-compose-file.yml> up -d
+```
+
+3. The application will be accessible at `http://localhost:8085`.

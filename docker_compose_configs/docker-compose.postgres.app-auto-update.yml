@@ -1,0 +1,36 @@
+services:
+  web:
+    image: zanotn/whatiswrong:latest
+    depends_on:
+      - db
+    ports:
+      - "8085:3000"
+    environment:
+      DB_ADAPTER: postgresql
+      DB_HOST: 192.168.1.1
+      DB_PORT: 5432
+      DB_NAME: whatiswrong_production
+      DB_USERNAME: postgres
+      DB_PASSWORD: postgres
+    volumes:
+      - app_tmp:/rails/tmp
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+    network_mode: "host"
+    restart: unless-stopped
+
+  # Watchtower service to auto-update the app container when a new image is available
+  watchtower:
+    image: nickfedor/watchtower
+    container_name: watchtower
+    restart: unless-stopped
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - WATCHTOWER_CLEANUP=true
+      - WATCHTOWER_SCHEDULE=0 0 23 * * *
+      - WATCHTOWER_LABEL_ENABLE=true
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+
+volumes:
+  app_tmp:
