@@ -4,7 +4,7 @@ class MessagesController < ApplicationController
   def index
     @apps = App.all
 
-    @messages = Message.order(occurred_at: :desc).joins(:app)
+    @messages = Message.includes([ :app ]).order(occurred_at: :desc).joins(:app)
 
     if params[:app_id].present?
       @messages = @messages.where(app_id: params[:app_id])

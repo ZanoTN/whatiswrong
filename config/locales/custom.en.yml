@@ -1,5 +1,8 @@
 en:
   custom:
+    demo:
+      this_is_demo_version: "This is a demo version. Some features may be limited or disabled."
+      update_profile_disabled: "Profile editing is disabled in the demo version."
     api_docs:
       title: "API Documentation"
       title_examples: "Examples"

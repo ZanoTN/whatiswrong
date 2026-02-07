@@ -3,6 +3,14 @@ module ApplicationHelper
     request.path.include?(controller_name)
   end
 
+  def self.is_demo_version?
+    ENV["DEMO_VERSION"] == "true"
+  end
+
+  def is_demo_version?
+    ApplicationHelper.is_demo_version?
+  end
+
   def format_datetime(datetime)
     ApplicationHelper.format_datetime(datetime)
   end

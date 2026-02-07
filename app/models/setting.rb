@@ -12,11 +12,18 @@ class Setting < ApplicationRecord
   validates :default_theme, presence: true
   validates :language, presence: true
 
-  enum :default_theme, { light: 'light', dark: 'dark' }, suffix: true
-  enum :language, { en: 'en', it: 'it' }, suffix: true
+  enum :default_theme, { light: "light", dark: "dark" }, suffix: true
+  enum :language, { en: "en", it: "it" }, suffix: true
 
 
   before_create :ensure_singleton_instance
+
+  def self.generate_default
+    if Setting.count.zero?
+      Rails.logger.info "Creating default Settings record..."
+      Setting.create
+    end
+  end
 
   private
 

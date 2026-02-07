@@ -1,3 +1,9 @@
+<% if is_demo_version? %>
+  <p class="text-center fs-4 w-100 mb-0 py-1 bg-blue">
+    <%= t("custom.demo.this_is_demo_version") %>
+  </p>
+<% end %>
+
 <% if current_user.present? %>
   <header class="navbar navbar-expand-md d-print-none">
     <div class="container-xxl">

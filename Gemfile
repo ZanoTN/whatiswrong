@@ -60,6 +60,9 @@ gem "faraday"
 gem "delayed_job_active_record"
 gem "delayed_job"
 
+# Random data
+gem "faker"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]
@@ -72,9 +75,6 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
-
-  # Random data for testing and seeding
-  gem "faker"
 
   gem "daemons"
 end
