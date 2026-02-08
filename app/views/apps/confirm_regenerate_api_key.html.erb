@@ -9,7 +9,7 @@
 					<a href="" class="link link-secondary" data-action="confirm-modal#close"><%= t("general.cancel") %></a>
 					<%= button_to t("general.regenerate"), regenerate_api_key_app_path(@app.id),
 													method: :put, 
-													data: { turbo_method: :put, turbo_frame: "modal", turbo_action: "replace", action: "confirm-modal#confirm" },
+													data: { turbo_method: :put, turbo: false },
 													class: "btn btn-danger ms-2",
 													form_class: "d-inline" %>
 

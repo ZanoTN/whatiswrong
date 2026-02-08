@@ -56,7 +56,7 @@ class AppsController < ApplicationController
     else
       flash[:alert] = t("custom.app.message.api_key_not_regenerated")
     end
-    redirect_to edit_app_path(@app)
+    redirect_to apps_path
   end
 
   private
