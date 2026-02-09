@@ -107,5 +107,6 @@ def random_backtrace
 end
 
 
+puts "Starting demo data generation..."
 clean_all_database
 generate_demo_data
