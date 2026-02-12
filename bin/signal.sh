@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-SEM=/tmp/signal.sem
+SEM=/rails/tmp/signal.sem
 FD=9
 
 mkdir -p "$(dirname "$SEM")"
