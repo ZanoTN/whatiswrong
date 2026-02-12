@@ -17,3 +17,7 @@ if App.system_app.nil?
   puts "Creating default 'whatiswrong' App record..."
   App.create(name: "WhatIsWrong")
 end
+
+if ENV["DEMO_VERSION"] == "true"
+  DemoService.run
+end

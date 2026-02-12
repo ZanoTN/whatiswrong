@@ -19,8 +19,21 @@
 
 # Learn more: http://github.com/javan/whenever
 
-every 1.day, at: "12:00 am" do
+# Force environment to production for whenever
+set :environment, ENV.fetch("RAILS_ENV", "production")
+
+# Output cron logs to stdout to be captured by Docker
+set :output, "STDOUT"
+
+#  Path to the Rails application
+set :path, "/rails"
+
+ENV.each do |key, value|
+  env key, value
+end
+
+every 1.day, at: "2:00 am" do
   if ENV["DEMO_VERSION"] == "true"
-    runner "db/demo_data.rb"
+    runner "DemoService.run"
   end
 end
