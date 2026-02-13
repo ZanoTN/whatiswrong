@@ -3,6 +3,8 @@
 WhatIsWrong is a web application designed to help users identify and troubleshoot issues with their applications and systems.
 It provides a user-friendly interface for tracking problems by collecting error messages from various applications and grouping them in a single centralized location.
 
+> Supported architectures: `amd64`, `arm64`
+
 You can find a live demo of the application [here](https://whatiswrong-demo.zanotn.space/), with the following credentials:
 
 - **Username**: `demo_user`
