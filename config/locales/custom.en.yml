@@ -35,6 +35,7 @@ en:
       are_you_sure_delete_app: "Are you sure you want to delete this application? This action cannot be undone."
       new_app: "New Application"
       edit_app: "Edit Application: %{app_name}"
+      no_notification_service: "No notification service configured"
       message:
         app_not_found: "Application not found."
         api_key_regenerated: "API key regenerated successfully."

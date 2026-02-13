@@ -11,9 +11,9 @@ services:
       DB_USERNAME: postgres
       DB_PASSWORD: postgres
     volumes:
-      - app_tmp:/rails/tmp
+      - secrets:/rails/secrets
     restart: unless-stopped
     network_mode: "host"
 
 volumes:
-  app_tmp:
+  secrets:

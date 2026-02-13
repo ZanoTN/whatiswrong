@@ -35,6 +35,7 @@ it:
       are_you_sure_delete_app: "Sei sicuro di voler eliminare questa applicazione? Questa azione non può essere annullata."
       new_app: "Nuova Applicazione"
       edit_app: "Modifica Applicazione: %{app_name}"
+      no_notification_service: "Nessun sistema di notifica configurato"
       message:
         app_not_found: "Applicazione non trovata."
         api_key_regenerated: "Chiave API rigenerata con successo."

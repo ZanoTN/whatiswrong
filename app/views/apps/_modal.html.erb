@@ -49,40 +49,44 @@
 							<div class="col-12">
 								<%= form.label t("custom.notification.manage_notification_services"), class: "form-label" %>
 
-								<table class="table">
-									<thead>
-										<tr>
-											<th class="w-100"></th>
-											<th><%= t("activerecord.attributes.app_notification.level_info") %></th>
-											<th><%= t("activerecord.attributes.app_notification.level_warning") %></th>
-											<th><%= t("activerecord.attributes.app_notification.level_error") %></th>
-										</tr>
-									</thead>
-
-									<tbody>
-										<%= form.fields_for :app_notifications do |notification_form| %>
+								<% if @app.app_notifications.any? %>
+									<table class="table">
+										<thead>
 											<tr>
-												<td class="text-start">
-													<%= notification_form.object.notification.name %>
-												</td>
-
-												<%= notification_form.hidden_field :id %>
-
-												<td class="text-center">
-													<%= notification_form.check_box :level_info, class: "form-check-input" %>
-												</td>
-
-												<td class="text-center">
-													<%= notification_form.check_box :level_warning, class: "form-check-input" %>
-												</td>
-
-												<td class="text-center">
-													<%= notification_form.check_box :level_error, class: "form-check-input" %>
-												</td>
+												<th class="w-100"></th>
+												<th><%= t("activerecord.attributes.app_notification.level_info") %></th>
+												<th><%= t("activerecord.attributes.app_notification.level_warning") %></th>
+												<th><%= t("activerecord.attributes.app_notification.level_error") %></th>
 											</tr>
-										<% end %>
-									</tbody>
-								</table>
+										</thead>
+
+										<tbody>
+											<%= form.fields_for :app_notifications do |notification_form| %>
+												<tr>
+													<td class="text-start">
+														<%= notification_form.object.notification.name %>
+													</td>
+
+													<%= notification_form.hidden_field :id %>
+
+													<td class="text-center">
+														<%= notification_form.check_box :level_info, class: "form-check-input" %>
+													</td>
+
+													<td class="text-center">
+														<%= notification_form.check_box :level_warning, class: "form-check-input" %>
+													</td>
+
+													<td class="text-center">
+														<%= notification_form.check_box :level_error, class: "form-check-input" %>
+													</td>
+												</tr>
+											<% end %>
+										</tbody>
+									</table>
+								<% else %>
+									<p class="mb-0"><%= t("custom.app.no_notification_service") %></p>
+								<% end %>
 							</div>
 						<% end %>
 

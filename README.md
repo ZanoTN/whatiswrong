@@ -1,7 +1,7 @@
 # 🛂 WhatIsWrong
 
 WhatIsWrong is a web application designed to help users identify and troubleshoot issues with their applications and systems.
-It provides a user-friendly interface for tracking problems.
+It provides a user-friendly interface for tracking problems by collecting error messages from various applications and grouping them in a single centralized location.
 
 You can find a live demo of the application [here](https://whatiswrong-demo.zanotn.space/), with the following credentials:
 
@@ -50,3 +50,10 @@ docker-compose -f <your-chosen-docker-compose-file.yml> up -d
 ## 🤝 Contributing
 
 Contributions are welcome! If you have any ideas for improvements or want to report a bug, please open an issue or submit a pull request.
+
+### Start developing locally
+
+1. Clone the repository.
+2. Use VS Code Dev Containers to open the project in a containerized development environment.
+3. Run migrations and start the application using "rails server" command.
+4. (Optional) Some data can be created using the command `rails runner "DemoService.run"`.

@@ -13,7 +13,7 @@ services:
       DB_USERNAME: postgres
       DB_PASSWORD: postgres
     volumes:
-      - app_tmp:/rails/tmp
+      - secrets:/rails/secrets
     restart: unless-stopped
 
   db:
@@ -29,4 +29,4 @@ services:
 
 volumes:
   postgres_data:
-  app_tmp:
+  secrets:
