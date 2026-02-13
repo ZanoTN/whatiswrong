@@ -36,6 +36,6 @@ module Whatiswrong
     )
 
     # Version of app
-    config.x.app_version = "0.0.0"
+    config.x.app_version = "1.0.0"
   end
 end
