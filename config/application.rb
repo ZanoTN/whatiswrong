@@ -34,8 +34,5 @@ module Whatiswrong
       Rails.root.join("log", "#{Rails.env}.log"), 5,
       25 * 1024 * 1024
     )
-
-    # Version of app
-    config.x.app_version = "1.0.0"
   end
 end

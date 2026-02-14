@@ -37,3 +37,7 @@ every 1.day, at: "2:00 am" do
     runner "DemoService.run"
   end
 end
+
+every 1.day, at: "3:00 am" do
+  runner "ApplicationVersionService.set_online_image_version"
+end

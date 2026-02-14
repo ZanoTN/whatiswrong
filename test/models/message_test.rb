@@ -11,7 +11,7 @@
 #  readed_at   :datetime
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
-#  app_id      :integer          not null
+#  app_id      :bigint           not null
 #
 # Indexes
 #

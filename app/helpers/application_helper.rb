@@ -47,8 +47,4 @@ module ApplicationHelper
       "Invalid JSON"
     end
   end
-
-  def app_version
-    Rails.configuration.x.app_version
-  end
 end

@@ -6,7 +6,10 @@
       • Theme by
       <%= link_to 'Tabler.io', "https://tabler.io", target: "_blank", rel: "noopener", class: "link-secondary" %>
       • Version
-      <%= app_version %>
+      <%= ApplicationVersion.get("image_version") || "unknown" %>
+      <% if ApplicationVersionService.is_new_version_available? %>
+        (new version available: <%= ApplicationVersion.get("online_image_version") %>)
+      <% end %>
     </div>
   </div>
 </footer>

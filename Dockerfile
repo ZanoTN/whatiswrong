@@ -84,6 +84,10 @@ RUN mkdir -p /var/run && \
     chown rails:rails /var/run/crond.pid && \
     chmod 664 /var/run/crond.pid
 
+# Save on a file the version of the image
+ARG IMAGE_VERSION
+ENV IMAGE_VERSION=${IMAGE_VERSION}
+
 EXPOSE 3000
 
 # Start supervisord (NON rails server)
