@@ -21,3 +21,6 @@ end
 if ENV["DEMO_VERSION"] == "true"
   DemoService.run
 end
+
+ApplicationVersionService.set_image_version
+ApplicationVersionService.set_online_image_version
